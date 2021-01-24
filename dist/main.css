@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.jumbotron {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url('/dist/image/ukmpano.webp');
+  /* background-color: #2e242c; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.img {
+  border-style: solid;
+  border-color: white !important;
+  border-width: 5 !important;
+}
+
+.scroll {
+  position: relative;
+  height: 1000;
+  overflow-y: scroll;
+}
+
+.navbar-transparent {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+div.round {
+  border-radius: 30px;
+}
+
+div.polaroid:hover {
+  opacity: 0.7;
+}
+
+div.polaroid {
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.box {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+div.ads {
+  font-family: 'Oswald', serif;
+  border-radius: 10px;
+  width: 80%;
+  padding: 30px;
+  margin: auto;
+  margin-bottom: 45px;
+  background-color: black;
+  transition: 0.3s;
+}
+
+div.change-cell {
+  color: gold;
+  padding: 0;
+}
+
+div.ads:hover {
+  opacity: 0.9;
+}
+
+.gif_player img {
+  width: 100%;
+}

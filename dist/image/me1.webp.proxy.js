@@ -1,0 +1,1 @@
+export default "/dist/image/me1.webp";
