@@ -1,9 +1,7 @@
-import { c as createCommonjsModule, r as react, g as getDefaultExportFromCjs } from '../common/index-d3589913.js';
-import { i as interopRequireDefault, _ as _extends_1, o as objectWithoutPropertiesLoose, a as interopRequireWildcard, c as classnames, T as ThemeProvider_1 } from '../common/ThemeProvider-a10cbf64.js';
-import { u as useEventCallback, e as esm } from '../common/createChainedFunction-91af6b76.js';
-import { S as SelectableContext_1, N as NavbarContext } from '../common/SelectableContext-503c0fe1.js';
-import { S as SafeAnchor_1 } from '../common/SafeAnchor-933492d4.js';
-import '../common/extends-f0c40b8d.js';
+import { c as createCommonjsModule, r as react, g as getDefaultExportFromCjs } from '../common/index-0ff745df.js';
+import { i as interopRequireDefault, _ as _extends_1, o as objectWithoutPropertiesLoose, a as interopRequireWildcard, c as classnames, T as ThemeProvider_1 } from '../common/ThemeProvider-ce5a0fa3.js';
+import { S as SelectableContext_1, c as createChainedFunction_1, u as useEventCallback, N as NavbarContext, e as esm } from '../common/useEventCallback-d2dc3f9e.js';
+import '../common/inheritsLoose-9bd80a82.js';
 
 var createChainableTypeChecker_1 = createCommonjsModule(function (module, exports) {
 
@@ -19,6 +17,7 @@ exports.default = createChainableTypeChecker;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  */
+
 // Mostly taken from ReactPropTypes.
 
 function createChainableTypeChecker(validate) {
@@ -43,9 +42,9 @@ function createChainableTypeChecker(validate) {
 
   var chainedCheckType = checkType.bind(null, false);
   chainedCheckType.isRequired = checkType.bind(null, true);
+
   return chainedCheckType;
 }
-
 module.exports = exports['default'];
 });
 
@@ -60,11 +59,7 @@ exports.default = all;
 
 var _createChainableTypeChecker2 = _interopRequireDefault(createChainableTypeChecker_1);
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function all() {
   for (var _len = arguments.length, validators = Array(_len), _key = 0; _key < _len; _key++) {
@@ -77,23 +72,23 @@ function all() {
     }
 
     var error = null;
+
     validators.forEach(function (validator) {
       if (error != null) {
         return;
       }
 
       var result = validator.apply(undefined, args);
-
       if (result != null) {
         error = result;
       }
     });
+
     return error;
   }
 
   return (0, _createChainableTypeChecker2.default)(allPropTypes);
 }
-
 module.exports = exports['default'];
 });
 
@@ -248,9 +243,9 @@ var _NavContext = interopRequireDefault(NavContext_1);
 
 var _SelectableContext = interopRequireWildcard(SelectableContext_1);
 
-var _TabContext = interopRequireDefault(TabContext_1); // eslint-disable-next-line @typescript-eslint/no-empty-function
+var _TabContext = interopRequireDefault(TabContext_1);
 
-
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 var noop = function noop() {};
 
 var AbstractNav = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
@@ -260,9 +255,9 @@ var AbstractNav = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
       activeKey = _ref.activeKey,
       role = _ref.role,
       onKeyDown = _ref.onKeyDown,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["as", "onSelect", "activeKey", "role", "onKeyDown"]); // A ref and forceUpdate for refocus, b/c we only want to trigger when needed
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["as", "onSelect", "activeKey", "role", "onKeyDown"]);
+  // A ref and forceUpdate for refocus, b/c we only want to trigger when needed
   // and don't want to reset the set in the effect
-
   var forceUpdate = (0, _useForceUpdate.default)();
   var needsRefocusRef = (0, _react.useRef)(false);
   var parentOnSelect = (0, _react.useContext)(_SelectableContext.default);
@@ -393,66 +388,99 @@ exports.default = _default;
 module.exports = exports["default"];
 });
 
+var SafeAnchor_1 = createCommonjsModule(function (module, exports) {
+
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _extends2 = interopRequireDefault(_extends_1);
+
+var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
+
+var _react = interopRequireDefault(react);
+
+var _createChainedFunction = interopRequireDefault(createChainedFunction_1);
+
+function isTrivialHref(href) {
+  return !href || href.trim() === '#';
+}
+/**
+ * There are situations due to browser quirks or Bootstrap CSS where
+ * an anchor tag is needed, when semantically a button tag is the
+ * better choice. SafeAnchor ensures that when an anchor is used like a
+ * button its accessible. It also emulates input `disabled` behavior for
+ * links, which is usually desirable for Buttons, NavItems, DropdownItems, etc.
+ */
+
+
+var SafeAnchor = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
+  var _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'a' : _ref$as,
+      disabled = _ref.disabled,
+      onKeyDown = _ref.onKeyDown,
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["as", "disabled", "onKeyDown"]);
+
+  var handleClick = function handleClick(event) {
+    var href = props.href,
+        onClick = props.onClick;
+
+    if (disabled || isTrivialHref(href)) {
+      event.preventDefault();
+    }
+
+    if (disabled) {
+      event.stopPropagation();
+      return;
+    }
+
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
+  var handleKeyDown = function handleKeyDown(event) {
+    if (event.key === ' ') {
+      event.preventDefault();
+      handleClick(event);
+    }
+  };
+
+  if (isTrivialHref(props.href)) {
+    props.role = props.role || 'button'; // we want to make sure there is a href attribute on the node
+    // otherwise, the cursor incorrectly styled (except with role='button')
+
+    props.href = props.href || '#';
+  }
+
+  if (disabled) {
+    props.tabIndex = -1;
+    props['aria-disabled'] = true;
+  }
+
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
+    ref: ref
+  }, props, {
+    onClick: handleClick,
+    onKeyDown: (0, _createChainedFunction.default)(handleKeyDown, onKeyDown)
+  }));
+});
+
+SafeAnchor.displayName = 'SafeAnchor';
+var _default = SafeAnchor;
+exports.default = _default;
+module.exports = exports["default"];
+});
+
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
 
-var __DEV__ = import.meta.env.NODE_ENV !== 'production';
-
-var warning = function () {};
-
-if (__DEV__) {
-  var printWarning = function printWarning(format, args) {
-    var len = arguments.length;
-    args = new Array(len > 1 ? len - 1 : 0);
-
-    for (var key = 1; key < len; key++) {
-      args[key - 1] = arguments[key];
-    }
-
-    var argIndex = 0;
-    var message = 'Warning: ' + format.replace(/%s/g, function () {
-      return args[argIndex++];
-    });
-
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-
-  warning = function (condition, format, args) {
-    var len = arguments.length;
-    args = new Array(len > 2 ? len - 2 : 0);
-
-    for (var key = 2; key < len; key++) {
-      args[key - 2] = arguments[key];
-    }
-
-    if (format === undefined) {
-      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-    }
-
-    if (!condition) {
-      printWarning.apply(null, [format].concat(args));
-    }
-  };
-}
+var warning = function() {};
 
 var warning_1 = warning;
 
@@ -475,7 +503,7 @@ var _react = interopRequireWildcard(react);
 
 var _useEventCallback = interopRequireDefault(useEventCallback);
 
-var _warning = interopRequireDefault(warning_1);
+interopRequireDefault(warning_1);
 
 var _NavContext = interopRequireDefault(NavContext_1);
 
@@ -502,8 +530,6 @@ var AbstractNavItem = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref
     if (!props.role && navContext.role === 'tablist') props.role = 'tab';
     var contextControllerId = navContext.getControllerId(navKey);
     var contextControlledId = navContext.getControlledId(navKey);
-    import.meta.env.NODE_ENV !== "production" ? (0, _warning.default)(!contextControllerId || !props.id, "[react-bootstrap] The provided id '" + props.id + "' was overwritten by the current navContext with '" + contextControllerId + "'.") : void 0;
-    import.meta.env.NODE_ENV !== "production" ? (0, _warning.default)(!contextControlledId || !props['aria-controls'], "[react-bootstrap] The provided aria-controls value '" + props['aria-controls'] + "' was overwritten by the current navContext with '" + contextControlledId + "'.") : void 0;
     props['data-rb-event-key'] = navKey;
     props.id = contextControllerId || props.id;
     props['aria-controls'] = contextControlledId || props['aria-controls'];

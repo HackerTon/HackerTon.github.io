@@ -1,7 +1,6 @@
 {
   "imports": {
     "react": "./react.js",
-    "react-bootstrap/Carousel": "./react-bootstrap/Carousel.js",
     "react-bootstrap/Col": "./react-bootstrap/Col.js",
     "react-bootstrap/Container": "./react-bootstrap/Container.js",
     "react-bootstrap/Image": "./react-bootstrap/Image.js",

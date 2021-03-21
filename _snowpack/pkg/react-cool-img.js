@@ -1,4 +1,4 @@
-import { r as react } from './common/index-d3589913.js';
+import { r as react } from './common/index-0ff745df.js';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -50,8 +50,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 var observerErr = "💡react-cool-img: the browser doesn't support Intersection Observer, please install polyfill to enable lazy loading: https://github.com/wellyshen/react-cool-img#intersection-observer-polyfill";
 var thresholdWarn = "💡react-cool-img: the threshold of observerOptions must be a number. Use 0 as fallback.";
-
-var useObserver = function (debounce, _ref) {
+var useObserver = (function (debounce, _ref) {
   var root = _ref.root,
       _ref$rootMargin = _ref.rootMargin,
       rootMargin = _ref$rootMargin === void 0 ? "50px" : _ref$rootMargin,
@@ -121,10 +120,9 @@ var useObserver = function (debounce, _ref) {
     };
   }, [el, startLoad, root, rootMargin, numThreshold, debounce, resetTimeout]);
   return [setEl, startLoad];
-};
+});
 
 var key = "REACT_COOL_IMG";
-
 var set = function set(src) {
   try {
     var data = JSON.parse(sessionStorage.getItem(key) || "{}");
@@ -135,7 +133,6 @@ var set = function set(src) {
     console.error("\uD83D\uDCA1 react-cool-img: " + error);
   }
 };
-
 var get = function get(src) {
   try {
     var data = JSON.parse(sessionStorage.getItem(key) || "{}");
@@ -148,9 +145,8 @@ var get = function get(src) {
     return false;
   }
 };
+
 /* eslint-disable lines-between-class-members */
-
-
 var Imager = /*#__PURE__*/function () {
   function Imager() {
     _defineProperty(this, "img", null);
