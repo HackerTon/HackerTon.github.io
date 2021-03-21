@@ -1,7 +1,7 @@
-import { c as createCommonjsModule, r as react, g as getDefaultExportFromCjs } from '../common/index-0ff745df.js';
-import { i as interopRequireDefault, _ as _extends_1, o as objectWithoutPropertiesLoose, a as interopRequireWildcard, c as classnames, T as ThemeProvider_1 } from '../common/ThemeProvider-ce5a0fa3.js';
-import { S as SelectableContext_1, c as createChainedFunction_1, u as useEventCallback, N as NavbarContext, e as esm } from '../common/useEventCallback-d2dc3f9e.js';
-import '../common/inheritsLoose-9bd80a82.js';
+import { _ as _objectWithoutPropertiesLoose, a as _extends } from '../common/objectWithoutPropertiesLoose-0056600f.js';
+import { u as useBootstrapPrefix, c as classnames } from '../common/ThemeProvider-ef92f2c1.js';
+import { c as createCommonjsModule, r as react } from '../common/index-0ff745df.js';
+import { S as SelectableContext, m as makeEventKey, c as createChainedFunction, u as useEventCallback, a as useUncontrolled, b as context$1 } from '../common/useEventCallback-31f507ef.js';
 
 var createChainableTypeChecker_1 = createCommonjsModule(function (module, exports) {
 
@@ -92,22 +92,8 @@ function all() {
 module.exports = exports['default'];
 });
 
-var CardContext = createCommonjsModule(function (module, exports) {
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _react = interopRequireDefault(react);
-
-var context = /*#__PURE__*/_react.default.createContext(null);
-
+var context = /*#__PURE__*/react.createContext(null);
 context.displayName = 'CardContext';
-var _default = context;
-exports.default = _default;
-module.exports = exports["default"];
-});
 
 var toArray = Function.prototype.bind.call(Function.prototype.call, [].slice);
 function qsa(element, selector) {
@@ -179,89 +165,29 @@ function useMergedRefs(refA, refB) {
   }, [refA, refB]);
 }
 
-var useMergedRefs$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  mergeRefs: mergeRefs,
-  'default': useMergedRefs
-});
-
-var NavContext_1 = createCommonjsModule(function (module, exports) {
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _react = interopRequireDefault(react);
-
-var NavContext = /*#__PURE__*/_react.default.createContext(null);
-
+var NavContext = /*#__PURE__*/react.createContext(null);
 NavContext.displayName = 'NavContext';
-var _default = NavContext;
-exports.default = _default;
-module.exports = exports["default"];
-});
 
-var TabContext_1 = createCommonjsModule(function (module, exports) {
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _react = interopRequireDefault(react);
-
-var TabContext = /*#__PURE__*/_react.default.createContext(null);
-
-var _default = TabContext;
-exports.default = _default;
-module.exports = exports["default"];
-});
-
-var AbstractNav_1 = createCommonjsModule(function (module, exports) {
-
-
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = interopRequireDefault(_extends_1);
-
-var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
-
-var _querySelectorAll = interopRequireDefault(qsa);
-
-var _react = interopRequireWildcard(react);
-
-var _useForceUpdate = interopRequireDefault(useForceUpdate);
-
-var _useMergedRefs = interopRequireDefault(useMergedRefs$1);
-
-var _NavContext = interopRequireDefault(NavContext_1);
-
-var _SelectableContext = interopRequireWildcard(SelectableContext_1);
-
-var _TabContext = interopRequireDefault(TabContext_1);
+var TabContext = /*#__PURE__*/react.createContext(null);
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 var noop = function noop() {};
 
-var AbstractNav = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
+var AbstractNav = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
   var _ref$as = _ref.as,
       Component = _ref$as === void 0 ? 'ul' : _ref$as,
       onSelect = _ref.onSelect,
       activeKey = _ref.activeKey,
       role = _ref.role,
       onKeyDown = _ref.onKeyDown,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["as", "onSelect", "activeKey", "role", "onKeyDown"]);
+      props = _objectWithoutPropertiesLoose(_ref, ["as", "onSelect", "activeKey", "role", "onKeyDown"]);
+
   // A ref and forceUpdate for refocus, b/c we only want to trigger when needed
   // and don't want to reset the set in the effect
-  var forceUpdate = (0, _useForceUpdate.default)();
-  var needsRefocusRef = (0, _react.useRef)(false);
-  var parentOnSelect = (0, _react.useContext)(_SelectableContext.default);
-  var tabContext = (0, _react.useContext)(_TabContext.default);
+  var forceUpdate = useForceUpdate();
+  var needsRefocusRef = react.useRef(false);
+  var parentOnSelect = react.useContext(SelectableContext);
+  var tabContext = react.useContext(TabContext);
   var getControlledId, getControllerId;
 
   if (tabContext) {
@@ -271,12 +197,12 @@ var AbstractNav = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
     getControllerId = tabContext.getControllerId;
   }
 
-  var listNode = (0, _react.useRef)(null);
+  var listNode = react.useRef(null);
 
   var getNextActiveChild = function getNextActiveChild(offset) {
     var currentListNode = listNode.current;
     if (!currentListNode) return null;
-    var items = (0, _querySelectorAll.default)(currentListNode, '[data-rb-event-key]:not(.disabled)');
+    var items = qsa(currentListNode, '[data-rb-event-key]:not(.disabled)');
     var activeChild = currentListNode.querySelector('.active');
     if (!activeChild) return null;
     var index = items.indexOf(activeChild);
@@ -319,7 +245,7 @@ var AbstractNav = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
     forceUpdate();
   };
 
-  (0, _react.useEffect)(function () {
+  react.useEffect(function () {
     if (listNode.current && needsRefocusRef.current) {
       var activeChild = listNode.current.querySelector('[data-rb-event-key].active');
       if (activeChild) activeChild.focus();
@@ -327,81 +253,40 @@ var AbstractNav = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
 
     needsRefocusRef.current = false;
   });
-  var mergedRef = (0, _useMergedRefs.default)(ref, listNode);
-  return /*#__PURE__*/_react.default.createElement(_SelectableContext.default.Provider, {
+  var mergedRef = useMergedRefs(ref, listNode);
+  return /*#__PURE__*/react.createElement(SelectableContext.Provider, {
     value: handleSelect
-  }, /*#__PURE__*/_react.default.createElement(_NavContext.default.Provider, {
+  }, /*#__PURE__*/react.createElement(NavContext.Provider, {
     value: {
       role: role,
       // used by NavLink to determine it's role
-      activeKey: (0, _SelectableContext.makeEventKey)(activeKey),
+      activeKey: makeEventKey(activeKey),
       getControlledId: getControlledId || noop,
       getControllerId: getControllerId || noop
     }
-  }, /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({}, props, {
+  }, /*#__PURE__*/react.createElement(Component, _extends({}, props, {
     onKeyDown: handleKeyDown,
     ref: mergedRef,
     role: role
   }))));
 });
 
-var _default = AbstractNav;
-exports.default = _default;
-module.exports = exports["default"];
-});
-
-var NavItem_1 = createCommonjsModule(function (module, exports) {
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = interopRequireDefault(_extends_1);
-
-var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
-
-var _classnames = interopRequireDefault(classnames);
-
-var _react = interopRequireDefault(react);
-
-
-
-var NavItem = /*#__PURE__*/_react.default.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+var NavItem = /*#__PURE__*/react.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 function (_ref, ref) {
   var bsPrefix = _ref.bsPrefix,
       className = _ref.className,
       children = _ref.children,
       _ref$as = _ref.as,
       Component = _ref$as === void 0 ? 'div' : _ref$as,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "className", "children", "as"]);
-  bsPrefix = (0, ThemeProvider_1.useBootstrapPrefix)(bsPrefix, 'nav-item');
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({}, props, {
+      props = _objectWithoutPropertiesLoose(_ref, ["bsPrefix", "className", "children", "as"]);
+
+  bsPrefix = useBootstrapPrefix(bsPrefix, 'nav-item');
+  return /*#__PURE__*/react.createElement(Component, _extends({}, props, {
     ref: ref,
-    className: (0, _classnames.default)(className, bsPrefix)
+    className: classnames(className, bsPrefix)
   }), children);
 });
-
 NavItem.displayName = 'NavItem';
-var _default = NavItem;
-exports.default = _default;
-module.exports = exports["default"];
-});
-
-var SafeAnchor_1 = createCommonjsModule(function (module, exports) {
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = interopRequireDefault(_extends_1);
-
-var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
-
-var _react = interopRequireDefault(react);
-
-var _createChainedFunction = interopRequireDefault(createChainedFunction_1);
 
 function isTrivialHref(href) {
   return !href || href.trim() === '#';
@@ -415,12 +300,12 @@ function isTrivialHref(href) {
  */
 
 
-var SafeAnchor = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
+var SafeAnchor = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
   var _ref$as = _ref.as,
       Component = _ref$as === void 0 ? 'a' : _ref$as,
       disabled = _ref.disabled,
       onKeyDown = _ref.onKeyDown,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["as", "disabled", "onKeyDown"]);
+      props = _objectWithoutPropertiesLoose(_ref, ["as", "disabled", "onKeyDown"]);
 
   var handleClick = function handleClick(event) {
     var href = props.href,
@@ -459,71 +344,30 @@ var SafeAnchor = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
     props['aria-disabled'] = true;
   }
 
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
+  return /*#__PURE__*/react.createElement(Component, _extends({
     ref: ref
   }, props, {
     onClick: handleClick,
-    onKeyDown: (0, _createChainedFunction.default)(handleKeyDown, onKeyDown)
+    onKeyDown: createChainedFunction(handleKeyDown, onKeyDown)
   }));
 });
-
 SafeAnchor.displayName = 'SafeAnchor';
-var _default = SafeAnchor;
-exports.default = _default;
-module.exports = exports["default"];
-});
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var warning = function() {};
-
-var warning_1 = warning;
-
-var AbstractNavItem_1 = createCommonjsModule(function (module, exports) {
-
-
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = interopRequireDefault(_extends_1);
-
-var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
-
-var _classnames = interopRequireDefault(classnames);
-
-var _react = interopRequireWildcard(react);
-
-var _useEventCallback = interopRequireDefault(useEventCallback);
-
-interopRequireDefault(warning_1);
-
-var _NavContext = interopRequireDefault(NavContext_1);
-
-var _SelectableContext = interopRequireWildcard(SelectableContext_1);
 
 var defaultProps = {
   disabled: false
 };
-
-var AbstractNavItem = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
+var AbstractNavItem = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
   var active = _ref.active,
       className = _ref.className,
       eventKey = _ref.eventKey,
       onSelect = _ref.onSelect,
       onClick = _ref.onClick,
       Component = _ref.as,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["active", "className", "eventKey", "onSelect", "onClick", "as"]);
-  var navKey = (0, _SelectableContext.makeEventKey)(eventKey, props.href);
-  var parentOnSelect = (0, _react.useContext)(_SelectableContext.default);
-  var navContext = (0, _react.useContext)(_NavContext.default);
+      props = _objectWithoutPropertiesLoose(_ref, ["active", "className", "eventKey", "onSelect", "onClick", "as"]);
+
+  var navKey = makeEventKey(eventKey, props.href);
+  var parentOnSelect = react.useContext(SelectableContext);
+  var navContext = react.useContext(NavContext);
   var isActive = active;
 
   if (navContext) {
@@ -545,52 +389,25 @@ var AbstractNavItem = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref
     props['aria-selected'] = isActive;
   }
 
-  var handleOnclick = (0, _useEventCallback.default)(function (e) {
+  var handleOnclick = useEventCallback(function (e) {
     if (onClick) onClick(e);
     if (navKey == null) return;
     if (onSelect) onSelect(navKey, e);
     if (parentOnSelect) parentOnSelect(navKey, e);
   });
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({}, props, {
+  return /*#__PURE__*/react.createElement(Component, _extends({}, props, {
     ref: ref,
     onClick: handleOnclick,
-    className: (0, _classnames.default)(className, isActive && 'active')
+    className: classnames(className, isActive && 'active')
   }));
 });
-
 AbstractNavItem.defaultProps = defaultProps;
-var _default = AbstractNavItem;
-exports.default = _default;
-module.exports = exports["default"];
-});
 
-var NavLink_1 = createCommonjsModule(function (module, exports) {
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = interopRequireDefault(_extends_1);
-
-var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
-
-var _classnames = interopRequireDefault(classnames);
-
-var _react = interopRequireDefault(react);
-
-var _SafeAnchor = interopRequireDefault(SafeAnchor_1);
-
-var _AbstractNavItem = interopRequireDefault(AbstractNavItem_1);
-
-
-
-var defaultProps = {
+var defaultProps$1 = {
   disabled: false,
-  as: _SafeAnchor.default
+  as: SafeAnchor
 };
-
-var NavLink = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
+var NavLink = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
   var bsPrefix = _ref.bsPrefix,
       disabled = _ref.disabled,
       className = _ref.className,
@@ -598,68 +415,30 @@ var NavLink = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
       eventKey = _ref.eventKey,
       onSelect = _ref.onSelect,
       as = _ref.as,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "disabled", "className", "href", "eventKey", "onSelect", "as"]);
-  bsPrefix = (0, ThemeProvider_1.useBootstrapPrefix)(bsPrefix, 'nav-link');
-  return /*#__PURE__*/_react.default.createElement(_AbstractNavItem.default, (0, _extends2.default)({}, props, {
+      props = _objectWithoutPropertiesLoose(_ref, ["bsPrefix", "disabled", "className", "href", "eventKey", "onSelect", "as"]);
+
+  bsPrefix = useBootstrapPrefix(bsPrefix, 'nav-link');
+  return /*#__PURE__*/react.createElement(AbstractNavItem, _extends({}, props, {
     href: href,
     ref: ref,
     eventKey: eventKey,
     as: as,
     disabled: disabled,
     onSelect: onSelect,
-    className: (0, _classnames.default)(className, bsPrefix, disabled && 'disabled')
+    className: classnames(className, bsPrefix, disabled && 'disabled')
   }));
 });
-
 NavLink.displayName = 'NavLink';
-NavLink.defaultProps = defaultProps;
-var _default = NavLink;
-exports.default = _default;
-module.exports = exports["default"];
-});
+NavLink.defaultProps = defaultProps$1;
 
-var Nav_1 = createCommonjsModule(function (module, exports) {
-
-
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = interopRequireDefault(_extends_1);
-
-var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
-
-var _classnames = interopRequireDefault(classnames);
-
-interopRequireDefault(all_1);
-
-var _react = interopRequireWildcard(react);
-
-
-
-
-
-var _NavbarContext = interopRequireDefault(NavbarContext);
-
-var _CardContext = interopRequireDefault(CardContext);
-
-var _AbstractNav = interopRequireDefault(AbstractNav_1);
-
-var _NavItem = interopRequireDefault(NavItem_1);
-
-var _NavLink = interopRequireDefault(NavLink_1);
-
-var defaultProps = {
+var defaultProps$2 = {
   justify: false,
   fill: false
 };
-
-var Nav = /*#__PURE__*/_react.default.forwardRef(function (uncontrolledProps, ref) {
+var Nav = /*#__PURE__*/react.forwardRef(function (uncontrolledProps, ref) {
   var _classNames;
 
-  var _useUncontrolled = (0, esm.useUncontrolled)(uncontrolledProps, {
+  var _useUncontrolled = useUncontrolled(uncontrolledProps, {
     activeKey: 'onSelect'
   }),
       _useUncontrolled$as = _useUncontrolled.as,
@@ -672,14 +451,14 @@ var Nav = /*#__PURE__*/_react.default.forwardRef(function (uncontrolledProps, re
       className = _useUncontrolled.className,
       children = _useUncontrolled.children,
       activeKey = _useUncontrolled.activeKey,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_useUncontrolled, ["as", "bsPrefix", "variant", "fill", "justify", "navbar", "className", "children", "activeKey"]);
+      props = _objectWithoutPropertiesLoose(_useUncontrolled, ["as", "bsPrefix", "variant", "fill", "justify", "navbar", "className", "children", "activeKey"]);
 
-  var bsPrefix = (0, ThemeProvider_1.useBootstrapPrefix)(initialBsPrefix, 'nav');
+  var bsPrefix = useBootstrapPrefix(initialBsPrefix, 'nav');
   var navbarBsPrefix;
   var cardHeaderBsPrefix;
   var isNavbar = false;
-  var navbarContext = (0, _react.useContext)(_NavbarContext.default);
-  var cardContext = (0, _react.useContext)(_CardContext.default);
+  var navbarContext = react.useContext(context$1);
+  var cardContext = react.useContext(context);
 
   if (navbarContext) {
     navbarBsPrefix = navbarContext.bsPrefix;
@@ -688,23 +467,16 @@ var Nav = /*#__PURE__*/_react.default.forwardRef(function (uncontrolledProps, re
     cardHeaderBsPrefix = cardContext.cardHeaderBsPrefix;
   }
 
-  return /*#__PURE__*/_react.default.createElement(_AbstractNav.default, (0, _extends2.default)({
+  return /*#__PURE__*/react.createElement(AbstractNav, _extends({
     as: as,
     ref: ref,
     activeKey: activeKey,
-    className: (0, _classnames.default)(className, (_classNames = {}, _classNames[bsPrefix] = !isNavbar, _classNames[navbarBsPrefix + "-nav"] = isNavbar, _classNames[cardHeaderBsPrefix + "-" + variant] = !!cardHeaderBsPrefix, _classNames[bsPrefix + "-" + variant] = !!variant, _classNames[bsPrefix + "-fill"] = fill, _classNames[bsPrefix + "-justified"] = justify, _classNames))
+    className: classnames(className, (_classNames = {}, _classNames[bsPrefix] = !isNavbar, _classNames[navbarBsPrefix + "-nav"] = isNavbar, _classNames[cardHeaderBsPrefix + "-" + variant] = !!cardHeaderBsPrefix, _classNames[bsPrefix + "-" + variant] = !!variant, _classNames[bsPrefix + "-fill"] = fill, _classNames[bsPrefix + "-justified"] = justify, _classNames))
   }, props), children);
 });
-
 Nav.displayName = 'Nav';
-Nav.defaultProps = defaultProps;
-Nav.Item = _NavItem.default;
-Nav.Link = _NavLink.default;
-var _default = Nav;
-exports.default = _default;
-module.exports = exports["default"];
-});
+Nav.defaultProps = defaultProps$2;
+Nav.Item = NavItem;
+Nav.Link = NavLink;
 
-var __pika_web_default_export_for_treeshaking__ = /*@__PURE__*/getDefaultExportFromCjs(Nav_1);
-
-export default __pika_web_default_export_for_treeshaking__;
+export default Nav;

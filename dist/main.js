@@ -70,10 +70,10 @@ const TopBottom = (props) => {
     style: {width: "56px"}
   }))), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("p", {
     style: {color: "white"}
-  }, " ", "I am a first year student at ", /* @__PURE__ */ React.createElement("a", {
+  }, " ", "I am a first year student at\xA0", /* @__PURE__ */ React.createElement("a", {
     style: {color: "#90caf9"},
     href: "http://www.ftsm.ukm.my/"
-  }, "National University of Malaysia Falculty of Information Science and Technology"), ", where I pursue my interest in Machine Learning. Previously, I was a Form-6 student at Kajang Highschool majoring in Physics. Over the course of my first semester my contribution to School@UKM was where I managed the program prior by scheduling teams for their specific role in the program, prepared modules for the participants. Together with my team, I designed and was the primary instructor for teaching materials at School@UKM. The program consisted of 26 participants in 2019. Furthermore, I am also a Robotic teacher at ", /* @__PURE__ */ React.createElement("a", {
+  }, "National University of Malaysia Falculty of Information Science and Technology"), ", where I pursue my interest in Machine Learning. Previously, I was a Form-6 student at Kajang Highschool majoring in Physics. Over the course of my first semester my contribution to School@UKM was where I managed the program prior by scheduling teams for their specific role in the program, prepared modules for the participants. Together with my team, I designed and was the primary instructor for teaching materials at School@UKM. The program consisted of 26 participants in 2019. Furthermore, I am also a Robotic teacher at\xA0", /* @__PURE__ */ React.createElement("a", {
     style: {color: "#90caf9"},
     href: "http://www.csds.com.my/"
   }, "CSDS Prima"), " ", "teaching children to build and code robots."), /* @__PURE__ */ React.createElement("p", {
@@ -81,10 +81,10 @@ const TopBottom = (props) => {
   }, "On the fun side, I developed more and more each day. I developed number of Deep Learning projects in Python (i.e:", /* @__PURE__ */ React.createElement("a", {
     style: {color: "#90caf9"},
     href: "https://github.com/HackerTon/end2endselfdriving"
-  }, "EndToEndselfDriving,  "), /* @__PURE__ */ React.createElement("a", {
+  }, "EndToEndselfDriving, \xA0"), /* @__PURE__ */ React.createElement("a", {
     style: {color: "#90caf9"},
     href: "https://github.com/HackerTon/expanding-network"
-  }, "ExpandingNetwork,  "), /* @__PURE__ */ React.createElement("a", {
+  }, "ExpandingNetwork, \xA0"), /* @__PURE__ */ React.createElement("a", {
     style: {color: "#90caf9"},
     href: "https://github.com/HackerTon/imagenet_downloader"
   }, "robosot-nav"), ") because I love the simplicity and efficiency of Python."))))), props.children, /* @__PURE__ */ React.createElement(Row, {
@@ -97,7 +97,7 @@ const TopBottom = (props) => {
     }
   }, /* @__PURE__ */ React.createElement(Col, null, /* @__PURE__ */ React.createElement("div", {
     id: "httem"
-  }, "Designed and coded by hackerton"), /* @__PURE__ */ React.createElement("h6", null, "Copyright © ", new Date().getFullYear(), " LAM KEN LUN, All Rights Reserved"))));
+  }, "Designed and coded by hackerton"), /* @__PURE__ */ React.createElement("h6", null, "Copyright \xA9 ", new Date().getFullYear(), " LAM KEN LUN, All Rights Reserved"))));
 };
 function Mainpage() {
   return /* @__PURE__ */ React.createElement(Container, null, /* @__PURE__ */ React.createElement(Row, null, /* @__PURE__ */ React.createElement(Col, {

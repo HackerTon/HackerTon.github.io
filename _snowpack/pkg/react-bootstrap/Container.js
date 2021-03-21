@@ -1,50 +1,27 @@
-import { g as getDefaultExportFromCjs, c as createCommonjsModule, r as react } from '../common/index-0ff745df.js';
-import { i as interopRequireDefault, _ as _extends_1, o as objectWithoutPropertiesLoose, c as classnames, T as ThemeProvider_1 } from '../common/ThemeProvider-ce5a0fa3.js';
-
-var Container_1 = createCommonjsModule(function (module, exports) {
-
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = interopRequireDefault(_extends_1);
-
-var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
-
-var _classnames = interopRequireDefault(classnames);
-
-var _react = interopRequireDefault(react);
-
-
+import { _ as _objectWithoutPropertiesLoose, a as _extends } from '../common/objectWithoutPropertiesLoose-0056600f.js';
+import { u as useBootstrapPrefix, c as classnames } from '../common/ThemeProvider-ef92f2c1.js';
+import { r as react } from '../common/index-0ff745df.js';
 
 var defaultProps = {
   fluid: false
 };
-
-var Container = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
+var Container = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
   var bsPrefix = _ref.bsPrefix,
       fluid = _ref.fluid,
       _ref$as = _ref.as,
       Component = _ref$as === void 0 ? 'div' : _ref$as,
       className = _ref.className,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "fluid", "as", "className"]);
-  var prefix = (0, ThemeProvider_1.useBootstrapPrefix)(bsPrefix, 'container');
+      props = _objectWithoutPropertiesLoose(_ref, ["bsPrefix", "fluid", "as", "className"]);
+
+  var prefix = useBootstrapPrefix(bsPrefix, 'container');
   var suffix = typeof fluid === 'string' ? "-" + fluid : '-fluid';
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
+  return /*#__PURE__*/react.createElement(Component, _extends({
     ref: ref
   }, props, {
-    className: (0, _classnames.default)(className, fluid ? "" + prefix + suffix : prefix)
+    className: classnames(className, fluid ? "" + prefix + suffix : prefix)
   }));
 });
-
 Container.displayName = 'Container';
 Container.defaultProps = defaultProps;
-var _default = Container;
-exports.default = _default;
-module.exports = exports["default"];
-});
 
-var __pika_web_default_export_for_treeshaking__ = /*@__PURE__*/getDefaultExportFromCjs(Container_1);
-
-export default __pika_web_default_export_for_treeshaking__;
+export default Container;
