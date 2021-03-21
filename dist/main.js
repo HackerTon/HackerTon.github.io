@@ -46,111 +46,95 @@ function Globalrouter() {
 }
 
 const TopBottom = props => {
-  return (
-    /*#__PURE__*/
-    // <div className="">
-    //   <Navbar bg="dark" variant="dark" expand="xl">
-    //     <Nav className="mr-auto">
-    //       <Nav.Link href="#one">Academic</Nav.Link>
-    //     </Nav>
-    //   </Navbar>
-    //   <Jumbotron>
-    //     <Container fluid>
-    //       <Row>
-    //         <Col xl={2}>
-    //           <Image src={Me1w} alt="myself" roundedCircle />
-    //         </Col>
-    //         <Col xl={9}>
-    //           <h1 style={{ color: 'white', fontWeight: 'bold' }}>About me</h1>
-    //           <p style={{ color: 'white' }}>
-    //             <h2>LAM KEN LUN</h2>
-    //             <h5>UKM Computer Science B.sc student</h5>
-    //             <h6>A175960@siswa.ukm.edu.my</h6>
-    //             <a href="https://github.com/HackerTon">
-    //               <Img src={Octo} style={{ width: '56px' }} />
-    //             </a>
-    //           </p>
-    //           <br />
-    //           <p style={{ color: 'white' }}>
-    //             {' '}
-    //             I am a first year student at&nbsp;
-    //             <a style={{ color: '#90caf9' }} href="http://www.ftsm.ukm.my/">
-    //               National University of Malaysia Falculty of Information
-    //               Science and Technology
-    //             </a>
-    //             , where I pursue my interest in Machine Learning. Previously, I
-    //             was a Form-6 student at Kajang Highschool majoring in Physics.
-    //             Over the course of my first semester my contribution to
-    //             School@UKM was where I managed the program prior by scheduling
-    //             teams for their specific role in the program, prepared modules
-    //             for the participants. Together with my team, I designed and was
-    //             the primary instructor for teaching materials at School@UKM. The
-    //             program consisted of 26 participants in 2019. Furthermore, I am
-    //             also a Robotic teacher at&nbsp;
-    //             <a style={{ color: '#90caf9' }} href="http://www.csds.com.my/">
-    //               CSDS Prima
-    //             </a>{' '}
-    //             teaching children to build and code robots.
-    //           </p>
-    //           <p style={{ color: 'white' }}>
-    //             On the fun side, I developed more and more each day. I developed
-    //             number of Deep Learning projects in Python (i.e:
-    //             <a
-    //               style={{ color: '#90caf9' }}
-    //               href="https://github.com/HackerTon/end2endselfdriving"
-    //             >
-    //               EndToEndselfDriving, &nbsp;
-    //             </a>
-    //             <a
-    //               style={{ color: '#90caf9' }}
-    //               href="https://github.com/HackerTon/expanding-network"
-    //             >
-    //               ExpandingNetwork, &nbsp;
-    //             </a>
-    //             <a
-    //               style={{ color: '#90caf9' }}
-    //               href="https://github.com/HackerTon/imagenet_downloader"
-    //             >
-    //               robosot-nav
-    //             </a>
-    //             ) because I love the simplicity and efficiency of Python.
-    //           </p>
-    //         </Col>
-    //       </Row>
-    //     </Container>
-    //   </Jumbotron>
-    //   {props.children}
-    //   <Row
-    //     style={{
-    //       textAlign: 'center',
-    //       color: 'white',
-    //       backgroundColor: '#343a40',
-    //       height: '100px',
-    //       width: '100%',
-    //     }}
-    //   >
-    //     <Col>
-    //       <div id="httem">Designed and coded by hackerton</div>
-    //       <h6>
-    //         Copyright &copy; {new Date().getFullYear()} LAM KEN LUN, All Rights
-    //         Reserved
-    //       </h6>
-    //     </Col>
-    //   </Row>
-    // </div>
-    React.createElement("div", {
-      className: "p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "flex-shrink-0"
-    }, /*#__PURE__*/React.createElement("img", {
-      className: "h-12 w-12",
-      alt: true
-    })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-      className: "text-xl font-medium text-black"
-    }, "ChitChat"), /*#__PURE__*/React.createElement("p", {
-      className: "text-gray-500"
-    }, "You have a new message!")))
-  );
+  return /*#__PURE__*/React.createElement("div", {
+    className: ""
+  }, /*#__PURE__*/React.createElement(Navbar, {
+    bg: "dark",
+    variant: "dark",
+    expand: "xl"
+  }, /*#__PURE__*/React.createElement(Nav, {
+    className: "mr-auto"
+  }, /*#__PURE__*/React.createElement(Nav.Link, {
+    href: "#one"
+  }, "Academic"))), /*#__PURE__*/React.createElement(Jumbotron, null, /*#__PURE__*/React.createElement(Container, {
+    fluid: true
+  }, /*#__PURE__*/React.createElement(Row, null, /*#__PURE__*/React.createElement(Col, {
+    xl: 2
+  }, /*#__PURE__*/React.createElement(Image, {
+    src: Me1w,
+    alt: "myself",
+    roundedCircle: true
+  })), /*#__PURE__*/React.createElement(Col, {
+    xl: 9
+  }, /*#__PURE__*/React.createElement("h1", {
+    style: {
+      color: 'white',
+      fontWeight: 'bold'
+    }
+  }, "About me"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'white'
+    }
+  }, /*#__PURE__*/React.createElement("h2", null, "LAM KEN LUN"), /*#__PURE__*/React.createElement("h5", null, "UKM Computer Science B.sc student"), /*#__PURE__*/React.createElement("h6", null, "A175960@siswa.ukm.edu.my"), /*#__PURE__*/React.createElement("a", {
+    href: "https://github.com/HackerTon"
+  }, /*#__PURE__*/React.createElement(Img, {
+    src: Octo,
+    style: {
+      width: '56px'
+    }
+  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'white'
+    }
+  }, ' ', "I am a first year student at\xA0", /*#__PURE__*/React.createElement("a", {
+    style: {
+      color: '#90caf9'
+    },
+    href: "http://www.ftsm.ukm.my/"
+  }, "National University of Malaysia Falculty of Information Science and Technology"), ", where I pursue my interest in Machine Learning. Previously, I was a Form-6 student at Kajang Highschool majoring in Physics. Over the course of my first semester my contribution to School@UKM was where I managed the program prior by scheduling teams for their specific role in the program, prepared modules for the participants. Together with my team, I designed and was the primary instructor for teaching materials at School@UKM. The program consisted of 26 participants in 2019. Furthermore, I am also a Robotic teacher at\xA0", /*#__PURE__*/React.createElement("a", {
+    style: {
+      color: '#90caf9'
+    },
+    href: "http://www.csds.com.my/"
+  }, "CSDS Prima"), ' ', "teaching children to build and code robots."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'white'
+    }
+  }, "On the fun side, I developed more and more each day. I developed number of Deep Learning projects in Python (i.e:", /*#__PURE__*/React.createElement("a", {
+    style: {
+      color: '#90caf9'
+    },
+    href: "https://github.com/HackerTon/end2endselfdriving"
+  }, "EndToEndselfDriving, \xA0"), /*#__PURE__*/React.createElement("a", {
+    style: {
+      color: '#90caf9'
+    },
+    href: "https://github.com/HackerTon/expanding-network"
+  }, "ExpandingNetwork, \xA0"), /*#__PURE__*/React.createElement("a", {
+    style: {
+      color: '#90caf9'
+    },
+    href: "https://github.com/HackerTon/imagenet_downloader"
+  }, "robosot-nav"), ") because I love the simplicity and efficiency of Python."))))), props.children, /*#__PURE__*/React.createElement(Row, {
+    style: {
+      textAlign: 'center',
+      color: 'white',
+      backgroundColor: '#343a40',
+      height: '100px',
+      width: '100%'
+    }
+  }, /*#__PURE__*/React.createElement(Col, null, /*#__PURE__*/React.createElement("div", {
+    id: "httem"
+  }, "Designed and coded by hackerton"), /*#__PURE__*/React.createElement("h6", null, "Copyright \xA9 ", new Date().getFullYear(), " LAM KEN LUN, All Rights Reserved")))) // <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+  //   <div className="flex-shrink-0">
+  //     <img className="h-12 w-12" alt />
+  //   </div>
+  //   <div>
+  //     <div className="text-xl font-medium text-black">ChitChat</div>
+  //     <p className="text-gray-500">You have a new message!</p>
+  //   </div>
+  // </div>
+  ;
 };
 
 function Mainpage() {
