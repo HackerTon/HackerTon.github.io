@@ -1,6 +1,21 @@
-import { _ as _objectWithoutPropertiesLoose, a as _extends } from './objectWithoutPropertiesLoose-0056600f.js';
-import { r as react } from './index-0ff745df.js';
-import { c as createChainedFunction } from './createChainedFunction-e3793109.js';
+import { c as createCommonjsModule, r as react } from './index-d3589913.js';
+import { i as interopRequireDefault, _ as _extends_1, o as objectWithoutPropertiesLoose } from './ThemeProvider-a10cbf64.js';
+import { c as createChainedFunction_1 } from './createChainedFunction-91af6b76.js';
+
+var SafeAnchor_1 = createCommonjsModule(function (module, exports) {
+
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _extends2 = interopRequireDefault(_extends_1);
+
+var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
+
+var _react = interopRequireDefault(react);
+
+var _createChainedFunction = interopRequireDefault(createChainedFunction_1);
 
 function isTrivialHref(href) {
   return !href || href.trim() === '#';
@@ -14,12 +29,12 @@ function isTrivialHref(href) {
  */
 
 
-var SafeAnchor = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
+var SafeAnchor = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
   var _ref$as = _ref.as,
       Component = _ref$as === void 0 ? 'a' : _ref$as,
       disabled = _ref.disabled,
       onKeyDown = _ref.onKeyDown,
-      props = _objectWithoutPropertiesLoose(_ref, ["as", "disabled", "onKeyDown"]);
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["as", "disabled", "onKeyDown"]);
 
   var handleClick = function handleClick(event) {
     var href = props.href,
@@ -58,13 +73,18 @@ var SafeAnchor = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
     props['aria-disabled'] = true;
   }
 
-  return /*#__PURE__*/react.createElement(Component, _extends({
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
     ref: ref
   }, props, {
     onClick: handleClick,
-    onKeyDown: createChainedFunction(handleKeyDown, onKeyDown)
+    onKeyDown: (0, _createChainedFunction.default)(handleKeyDown, onKeyDown)
   }));
 });
-SafeAnchor.displayName = 'SafeAnchor';
 
-export { SafeAnchor as S };
+SafeAnchor.displayName = 'SafeAnchor';
+var _default = SafeAnchor;
+exports.default = _default;
+module.exports = exports["default"];
+});
+
+export { SafeAnchor_1 as S };

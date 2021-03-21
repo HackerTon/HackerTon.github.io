@@ -1,28 +1,25 @@
-import { _ as _inheritsLoose } from './common/inheritsLoose-b67f434e.js';
-import { r as react, c as createCommonjsModule } from './common/index-0ff745df.js';
-import { p as propTypes } from './common/index-89cdc518.js';
-import { a as _extends, _ as _objectWithoutPropertiesLoose } from './common/objectWithoutPropertiesLoose-0056600f.js';
+import { a as _extends, b as _inheritsLoose, _ as _objectWithoutPropertiesLoose } from './common/extends-f0c40b8d.js';
+import { r as react } from './common/index-d3589913.js';
+import { p as propTypes, r as reactIs } from './common/index-f36ceb1e.js';
 
 function isAbsolute(pathname) {
   return pathname.charAt(0) === '/';
-}
+} // About 1.5x faster than the two-arg version of Array#splice()
 
-// About 1.5x faster than the two-arg version of Array#splice()
+
 function spliceOne(list, index) {
   for (var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1) {
     list[i] = list[k];
   }
 
   list.pop();
-}
+} // This implementation is based heavily on node's url.parse
 
-// This implementation is based heavily on node's url.parse
+
 function resolvePathname(to, from) {
   if (from === undefined) from = '';
-
-  var toParts = (to && to.split('/')) || [];
-  var fromParts = (from && from.split('/')) || [];
-
+  var toParts = to && to.split('/') || [];
+  var fromParts = from && from.split('/') || [];
   var isToAbs = to && isAbsolute(to);
   var isFromAbs = from && isAbsolute(from);
   var mustEndAbs = isToAbs || isFromAbs;
@@ -37,8 +34,8 @@ function resolvePathname(to, from) {
   }
 
   if (!fromParts.length) return '/';
-
   var hasTrailingSlash;
+
   if (fromParts.length) {
     var last = fromParts[fromParts.length - 1];
     hasTrailingSlash = last === '.' || last === '..' || last === '';
@@ -47,6 +44,7 @@ function resolvePathname(to, from) {
   }
 
   var up = 0;
+
   for (var i = fromParts.length; i >= 0; i--) {
     var part = fromParts[i];
 
@@ -62,46 +60,67 @@ function resolvePathname(to, from) {
   }
 
   if (!mustEndAbs) for (; up--; up) fromParts.unshift('..');
-
-  if (
-    mustEndAbs &&
-    fromParts[0] !== '' &&
-    (!fromParts[0] || !isAbsolute(fromParts[0]))
-  )
-    fromParts.unshift('');
-
+  if (mustEndAbs && fromParts[0] !== '' && (!fromParts[0] || !isAbsolute(fromParts[0]))) fromParts.unshift('');
   var result = fromParts.join('/');
-
   if (hasTrailingSlash && result.substr(-1) !== '/') result += '/';
-
   return result;
 }
 
-var prefix = 'Invariant failed';
-function invariant(condition, message) {
+var isProduction$1 = import.meta.env.NODE_ENV === 'production';
+
+function warning(condition, message) {
+  if (!isProduction$1) {
     if (condition) {
-        return;
+      return;
     }
-    {
-        throw new Error(prefix);
+
+    var text = "Warning: " + message;
+
+    if (typeof console !== 'undefined') {
+      console.warn(text);
     }
+
+    try {
+      throw Error(text);
+    } catch (x) {}
+  }
 }
 
-function addLeadingSlash(path) {
+var isProduction = import.meta.env.NODE_ENV === 'production';
+var prefix = 'Invariant failed';
+
+function invariant(condition, message) {
+  if (condition) {
+    return;
+  }
+
+  if (isProduction) {
+    throw new Error(prefix);
+  }
+
+  throw new Error(prefix + ": " + (message || ''));
+}
+
+function addLeadingSlash$1(path) {
   return path.charAt(0) === '/' ? path : '/' + path;
 }
+
 function stripLeadingSlash(path) {
   return path.charAt(0) === '/' ? path.substr(1) : path;
 }
+
 function hasBasename(path, prefix) {
   return path.toLowerCase().indexOf(prefix.toLowerCase()) === 0 && '/?#'.indexOf(path.charAt(prefix.length)) !== -1;
 }
-function stripBasename(path, prefix) {
+
+function stripBasename$1(path, prefix) {
   return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
 }
+
 function stripTrailingSlash(path) {
   return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
 }
+
 function parsePath(path) {
   var pathname = path || '/';
   var search = '';
@@ -126,6 +145,7 @@ function parsePath(path) {
     hash: hash === '#' ? '' : hash
   };
 }
+
 function createPath(location) {
   var pathname = location.pathname,
       search = location.search,
@@ -196,6 +216,7 @@ function createTransitionManager() {
   var prompt = null;
 
   function setPrompt(nextPrompt) {
+    import.meta.env.NODE_ENV !== "production" ? warning(prompt == null, 'A history supports only one prompt at a time') : void 0;
     prompt = nextPrompt;
     return function () {
       if (prompt === nextPrompt) prompt = null;
@@ -213,6 +234,7 @@ function createTransitionManager() {
         if (typeof getUserConfirmation === 'function') {
           getUserConfirmation(result, callback);
         } else {
+          import.meta.env.NODE_ENV !== "production" ? warning(false, 'A history needs a getUserConfirmation function in order to use a prompt message') : void 0;
           callback(true);
         }
       } else {
@@ -261,6 +283,7 @@ function createTransitionManager() {
 }
 
 var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
 function getConfirmation(message, callback) {
   callback(window.confirm(message)); // eslint-disable-line no-alert
 }
@@ -272,6 +295,7 @@ function getConfirmation(message, callback) {
  * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
  */
 
+
 function supportsHistory() {
   var ua = window.navigator.userAgent;
   if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
@@ -282,12 +306,14 @@ function supportsHistory() {
  * IE10 and IE11 do not.
  */
 
+
 function supportsPopStateOnHashChange() {
   return window.navigator.userAgent.indexOf('Trident') === -1;
 }
 /**
  * Returns false if using go(n) with hash history causes a full page reload.
  */
+
 
 function supportsGoWithoutReloadUsingHash() {
   return window.navigator.userAgent.indexOf('Firefox') === -1;
@@ -297,6 +323,7 @@ function supportsGoWithoutReloadUsingHash() {
  * Accounts for the fact that Chrome on iOS fires real popstate events
  * containing undefined state when pressing the back button.
  */
+
 
 function isExtraneousPopstateEvent(event) {
   return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
@@ -325,7 +352,7 @@ function createBrowserHistory(props) {
     props = {};
   }
 
-  !canUseDOM ?  invariant(false) : void 0;
+  !canUseDOM ? import.meta.env.NODE_ENV !== "production" ? invariant(false, 'Browser history needs a DOM') : invariant(false) : void 0;
   var globalHistory = window.history;
   var canUseHistory = supportsHistory();
   var needsHashChangeListener = !supportsPopStateOnHashChange();
@@ -336,7 +363,7 @@ function createBrowserHistory(props) {
       getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
       _props$keyLength = _props.keyLength,
       keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
-  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+  var basename = props.basename ? stripTrailingSlash(addLeadingSlash$1(props.basename)) : '';
 
   function getDOMLocation(historyState) {
     var _ref = historyState || {},
@@ -348,7 +375,8 @@ function createBrowserHistory(props) {
         search = _window$location.search,
         hash = _window$location.hash;
     var path = pathname + search + hash;
-    if (basename) path = stripBasename(path, basename);
+    import.meta.env.NODE_ENV !== "production" ? warning(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".') : void 0;
+    if (basename) path = stripBasename$1(path, basename);
     return createLocation(path, state, key);
   }
 
@@ -421,6 +449,7 @@ function createBrowserHistory(props) {
   }
 
   function push(path, state) {
+    import.meta.env.NODE_ENV !== "production" ? warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : void 0;
     var action = 'PUSH';
     var location = createLocation(path, state, createKey(), history.location);
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -448,12 +477,14 @@ function createBrowserHistory(props) {
           });
         }
       } else {
+        import.meta.env.NODE_ENV !== "production" ? warning(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history') : void 0;
         window.location.href = href;
       }
     });
   }
 
   function replace(path, state) {
+    import.meta.env.NODE_ENV !== "production" ? warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : void 0;
     var action = 'REPLACE';
     var location = createLocation(path, state, createKey(), history.location);
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -479,6 +510,7 @@ function createBrowserHistory(props) {
           });
         }
       } else {
+        import.meta.env.NODE_ENV !== "production" ? warning(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history') : void 0;
         window.location.replace(href);
       }
     });
@@ -571,11 +603,11 @@ var HashPathCoders = {
   },
   noslash: {
     encodePath: stripLeadingSlash,
-    decodePath: addLeadingSlash
+    decodePath: addLeadingSlash$1
   },
   slash: {
-    encodePath: addLeadingSlash,
-    decodePath: addLeadingSlash
+    encodePath: addLeadingSlash$1,
+    decodePath: addLeadingSlash$1
   }
 };
 
@@ -605,7 +637,7 @@ function createHashHistory(props) {
     props = {};
   }
 
-  !canUseDOM ?  invariant(false) : void 0;
+  !canUseDOM ? import.meta.env.NODE_ENV !== "production" ? invariant(false, 'Hash history needs a DOM') : invariant(false) : void 0;
   var globalHistory = window.history;
   var canGoWithoutReload = supportsGoWithoutReloadUsingHash();
   var _props = props,
@@ -613,14 +645,15 @@ function createHashHistory(props) {
       getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
       _props$hashType = _props.hashType,
       hashType = _props$hashType === void 0 ? 'slash' : _props$hashType;
-  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+  var basename = props.basename ? stripTrailingSlash(addLeadingSlash$1(props.basename)) : '';
   var _HashPathCoders$hashT = HashPathCoders[hashType],
       encodePath = _HashPathCoders$hashT.encodePath,
       decodePath = _HashPathCoders$hashT.decodePath;
 
   function getDOMLocation() {
     var path = decodePath(getHashPath());
-    if (basename) path = stripBasename(path, basename);
+    import.meta.env.NODE_ENV !== "production" ? warning(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".') : void 0;
+    if (basename) path = stripBasename$1(path, basename);
     return createLocation(path);
   }
 
@@ -714,6 +747,7 @@ function createHashHistory(props) {
   }
 
   function push(path, state) {
+    import.meta.env.NODE_ENV !== "production" ? warning(state === undefined, 'Hash history cannot push state; it is ignored') : void 0;
     var action = 'PUSH';
     var location = createLocation(path, undefined, undefined, history.location);
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -737,12 +771,14 @@ function createHashHistory(props) {
           location: location
         });
       } else {
+        import.meta.env.NODE_ENV !== "production" ? warning(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack') : void 0;
         setState();
       }
     });
   }
 
   function replace(path, state) {
+    import.meta.env.NODE_ENV !== "production" ? warning(state === undefined, 'Hash history cannot replace state; it is ignored') : void 0;
     var action = 'REPLACE';
     var location = createLocation(path, undefined, undefined, history.location);
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -769,6 +805,7 @@ function createHashHistory(props) {
   }
 
   function go(n) {
+    import.meta.env.NODE_ENV !== "production" ? warning(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser') : void 0;
     globalHistory.go(n);
   }
 
@@ -883,6 +920,7 @@ function createMemoryHistory(props) {
   var createHref = createPath;
 
   function push(path, state) {
+    import.meta.env.NODE_ENV !== "production" ? warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : void 0;
     var action = 'PUSH';
     var location = createLocation(path, state, createKey(), history.location);
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -907,6 +945,7 @@ function createMemoryHistory(props) {
   }
 
   function replace(path, state) {
+    import.meta.env.NODE_ENV !== "production" ? warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : void 0;
     var action = 'REPLACE';
     var location = createLocation(path, state, createKey(), history.location);
     transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
@@ -1060,6 +1099,10 @@ function createReactContext(defaultValue, calculateChangedBits) {
         } else {
           changedBits = typeof calculateChangedBits === 'function' ? calculateChangedBits(oldValue, newValue) : MAX_SIGNED_31_BIT_INT;
 
+          if (import.meta.env.NODE_ENV !== 'production') {
+            warning((changedBits & MAX_SIGNED_31_BIT_INT) === changedBits, 'calculateChangedBits: Expected the return value to be a ' + '31-bit integer. Instead received: ' + changedBits);
+          }
+
           changedBits |= 0;
 
           if (changedBits !== 0) {
@@ -1155,30 +1198,28 @@ var isarray = Array.isArray || function (arr) {
 /**
  * Expose `pathToRegexp`.
  */
+
+
 var pathToRegexp_1 = pathToRegexp;
 var parse_1 = parse;
 var compile_1 = compile;
 var tokensToFunction_1 = tokensToFunction;
 var tokensToRegExp_1 = tokensToRegExp;
-
 /**
  * The main path matching regexp utility.
  *
  * @type {RegExp}
  */
-var PATH_REGEXP = new RegExp([
-  // Match escaped characters that would otherwise appear in future matches.
-  // This allows the user to escape special characters that won't transform.
-  '(\\\\.)',
-  // Match Express-style parameters and un-named parameters with a prefix
-  // and optional suffixes. Matches appear as:
-  //
-  // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
-  // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
-  // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
-  '([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))'
-].join('|'), 'g');
 
+var PATH_REGEXP = new RegExp([// Match escaped characters that would otherwise appear in future matches.
+// This allows the user to escape special characters that won't transform.
+'(\\\\.)', // Match Express-style parameters and un-named parameters with a prefix
+// and optional suffixes. Matches appear as:
+//
+// "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
+// "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
+// "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
+'([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))'].join('|'), 'g');
 /**
  * Parse a string for the raw tokens.
  *
@@ -1186,7 +1227,8 @@ var PATH_REGEXP = new RegExp([
  * @param  {Object=} options
  * @return {!Array}
  */
-function parse (str, options) {
+
+function parse(str, options) {
   var tokens = [];
   var key = 0;
   var index = 0;
@@ -1199,12 +1241,11 @@ function parse (str, options) {
     var escaped = res[1];
     var offset = res.index;
     path += str.slice(index, offset);
-    index = offset + m.length;
+    index = offset + m.length; // Ignore already escaped sequences.
 
-    // Ignore already escaped sequences.
     if (escaped) {
       path += escaped[1];
-      continue
+      continue;
     }
 
     var next = str[index];
@@ -1213,9 +1254,8 @@ function parse (str, options) {
     var capture = res[4];
     var group = res[5];
     var modifier = res[6];
-    var asterisk = res[7];
+    var asterisk = res[7]; // Push the current path onto the tokens.
 
-    // Push the current path onto the tokens.
     if (path) {
       tokens.push(path);
       path = '';
@@ -1226,7 +1266,6 @@ function parse (str, options) {
     var optional = modifier === '?' || modifier === '*';
     var delimiter = res[2] || defaultDelimiter;
     var pattern = capture || group;
-
     tokens.push({
       name: name || key++,
       prefix: prefix || '',
@@ -1235,23 +1274,22 @@ function parse (str, options) {
       repeat: repeat,
       partial: partial,
       asterisk: !!asterisk,
-      pattern: pattern ? escapeGroup(pattern) : (asterisk ? '.*' : '[^' + escapeString(delimiter) + ']+?')
+      pattern: pattern ? escapeGroup(pattern) : asterisk ? '.*' : '[^' + escapeString(delimiter) + ']+?'
     });
-  }
+  } // Match any characters still remaining.
 
-  // Match any characters still remaining.
+
   if (index < str.length) {
     path += str.substr(index);
-  }
+  } // If the path exists, push it onto the end.
 
-  // If the path exists, push it onto the end.
+
   if (path) {
     tokens.push(path);
   }
 
-  return tokens
+  return tokens;
 }
-
 /**
  * Compile a string to a template function for the path.
  *
@@ -1259,42 +1297,46 @@ function parse (str, options) {
  * @param  {Object=}            options
  * @return {!function(Object=, Object=)}
  */
-function compile (str, options) {
-  return tokensToFunction(parse(str, options), options)
-}
 
+
+function compile(str, options) {
+  return tokensToFunction(parse(str, options), options);
+}
 /**
  * Prettier encoding of URI path segments.
  *
  * @param  {string}
  * @return {string}
  */
-function encodeURIComponentPretty (str) {
-  return encodeURI(str).replace(/[\/?#]/g, function (c) {
-    return '%' + c.charCodeAt(0).toString(16).toUpperCase()
-  })
-}
 
+
+function encodeURIComponentPretty(str) {
+  return encodeURI(str).replace(/[\/?#]/g, function (c) {
+    return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+  });
+}
 /**
  * Encode the asterisk parameter. Similar to `pretty`, but allows slashes.
  *
  * @param  {string}
  * @return {string}
  */
-function encodeAsterisk (str) {
-  return encodeURI(str).replace(/[?#]/g, function (c) {
-    return '%' + c.charCodeAt(0).toString(16).toUpperCase()
-  })
-}
 
+
+function encodeAsterisk(str) {
+  return encodeURI(str).replace(/[?#]/g, function (c) {
+    return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+  });
+}
 /**
  * Expose a method for transforming tokens into the path function.
  */
-function tokensToFunction (tokens, options) {
-  // Compile all the tokens into regexps.
-  var matches = new Array(tokens.length);
 
-  // Compile all the patterns before compilation.
+
+function tokensToFunction(tokens, options) {
+  // Compile all the tokens into regexps.
+  var matches = new Array(tokens.length); // Compile all the patterns before compilation.
+
   for (var i = 0; i < tokens.length; i++) {
     if (typeof tokens[i] === 'object') {
       matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$', flags(options));
@@ -1312,8 +1354,7 @@ function tokensToFunction (tokens, options) {
 
       if (typeof token === 'string') {
         path += token;
-
-        continue
+        continue;
       }
 
       var value = data[token.name];
@@ -1326,22 +1367,22 @@ function tokensToFunction (tokens, options) {
             path += token.prefix;
           }
 
-          continue
+          continue;
         } else {
-          throw new TypeError('Expected "' + token.name + '" to be defined')
+          throw new TypeError('Expected "' + token.name + '" to be defined');
         }
       }
 
       if (isarray(value)) {
         if (!token.repeat) {
-          throw new TypeError('Expected "' + token.name + '" to not repeat, but received `' + JSON.stringify(value) + '`')
+          throw new TypeError('Expected "' + token.name + '" to not repeat, but received `' + JSON.stringify(value) + '`');
         }
 
         if (value.length === 0) {
           if (token.optional) {
-            continue
+            continue;
           } else {
-            throw new TypeError('Expected "' + token.name + '" to not be empty')
+            throw new TypeError('Expected "' + token.name + '" to not be empty');
           }
         }
 
@@ -1349,48 +1390,49 @@ function tokensToFunction (tokens, options) {
           segment = encode(value[j]);
 
           if (!matches[i].test(segment)) {
-            throw new TypeError('Expected all "' + token.name + '" to match "' + token.pattern + '", but received `' + JSON.stringify(segment) + '`')
+            throw new TypeError('Expected all "' + token.name + '" to match "' + token.pattern + '", but received `' + JSON.stringify(segment) + '`');
           }
 
           path += (j === 0 ? token.prefix : token.delimiter) + segment;
         }
 
-        continue
+        continue;
       }
 
       segment = token.asterisk ? encodeAsterisk(value) : encode(value);
 
       if (!matches[i].test(segment)) {
-        throw new TypeError('Expected "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"')
+        throw new TypeError('Expected "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"');
       }
 
       path += token.prefix + segment;
     }
 
-    return path
-  }
+    return path;
+  };
 }
-
 /**
  * Escape a regular expression string.
  *
  * @param  {string} str
  * @return {string}
  */
-function escapeString (str) {
-  return str.replace(/([.+*?=^!:${}()[\]|\/\\])/g, '\\$1')
-}
 
+
+function escapeString(str) {
+  return str.replace(/([.+*?=^!:${}()[\]|\/\\])/g, '\\$1');
+}
 /**
  * Escape the capturing group by escaping special characters and meaning.
  *
  * @param  {string} group
  * @return {string}
  */
-function escapeGroup (group) {
-  return group.replace(/([=!:$\/()])/g, '\\$1')
-}
 
+
+function escapeGroup(group) {
+  return group.replace(/([=!:$\/()])/g, '\\$1');
+}
 /**
  * Attach the keys as a property of the regexp.
  *
@@ -1398,21 +1440,23 @@ function escapeGroup (group) {
  * @param  {Array}   keys
  * @return {!RegExp}
  */
-function attachKeys (re, keys) {
-  re.keys = keys;
-  return re
-}
 
+
+function attachKeys(re, keys) {
+  re.keys = keys;
+  return re;
+}
 /**
  * Get the flags for a regexp from the options.
  *
  * @param  {Object} options
  * @return {string}
  */
-function flags (options) {
-  return options && options.sensitive ? '' : 'i'
-}
 
+
+function flags(options) {
+  return options && options.sensitive ? '' : 'i';
+}
 /**
  * Pull out keys from a regexp.
  *
@@ -1420,7 +1464,9 @@ function flags (options) {
  * @param  {!Array}  keys
  * @return {!RegExp}
  */
-function regexpToRegexp (path, keys) {
+
+
+function regexpToRegexp(path, keys) {
   // Use a negative lookahead to match only capturing groups.
   var groups = path.source.match(/\((?!\?)/g);
 
@@ -1439,9 +1485,8 @@ function regexpToRegexp (path, keys) {
     }
   }
 
-  return attachKeys(path, keys)
+  return attachKeys(path, keys);
 }
-
 /**
  * Transform an array into a regexp.
  *
@@ -1450,7 +1495,9 @@ function regexpToRegexp (path, keys) {
  * @param  {!Object} options
  * @return {!RegExp}
  */
-function arrayToRegexp (path, keys, options) {
+
+
+function arrayToRegexp(path, keys, options) {
   var parts = [];
 
   for (var i = 0; i < path.length; i++) {
@@ -1458,10 +1505,8 @@ function arrayToRegexp (path, keys, options) {
   }
 
   var regexp = new RegExp('(?:' + parts.join('|') + ')', flags(options));
-
-  return attachKeys(regexp, keys)
+  return attachKeys(regexp, keys);
 }
-
 /**
  * Create a path regexp from string input.
  *
@@ -1470,10 +1515,11 @@ function arrayToRegexp (path, keys, options) {
  * @param  {!Object} options
  * @return {!RegExp}
  */
-function stringToRegexp (path, keys, options) {
-  return tokensToRegExp(parse(path, options), keys, options)
-}
 
+
+function stringToRegexp(path, keys, options) {
+  return tokensToRegExp(parse(path, options), keys, options);
+}
 /**
  * Expose a function for taking tokens and returning a RegExp.
  *
@@ -1482,19 +1528,21 @@ function stringToRegexp (path, keys, options) {
  * @param  {Object=}         options
  * @return {!RegExp}
  */
-function tokensToRegExp (tokens, keys, options) {
+
+
+function tokensToRegExp(tokens, keys, options) {
   if (!isarray(keys)) {
-    options = /** @type {!Object} */ (keys || options);
+    options =
+    /** @type {!Object} */
+    keys || options;
     keys = [];
   }
 
   options = options || {};
-
   var strict = options.strict;
   var end = options.end !== false;
-  var route = '';
+  var route = ''; // Iterate over the tokens and create our regexp string.
 
-  // Iterate over the tokens and create our regexp string.
   for (var i = 0; i < tokens.length; i++) {
     var token = tokens[i];
 
@@ -1503,7 +1551,6 @@ function tokensToRegExp (tokens, keys, options) {
     } else {
       var prefix = escapeString(token.prefix);
       var capture = '(?:' + token.pattern + ')';
-
       keys.push(token);
 
       if (token.repeat) {
@@ -1525,12 +1572,11 @@ function tokensToRegExp (tokens, keys, options) {
   }
 
   var delimiter = escapeString(options.delimiter || '/');
-  var endsWithDelimiter = route.slice(-delimiter.length) === delimiter;
-
-  // In non-strict mode we allow a slash at the end of match. If the path to
+  var endsWithDelimiter = route.slice(-delimiter.length) === delimiter; // In non-strict mode we allow a slash at the end of match. If the path to
   // match already ends with a slash, we remove it for consistency. The slash
   // is valid at the end of a path match, not in the middle. This is important
   // in non-ending mode, where "/test/" shouldn't match "/test//route".
+
   if (!strict) {
     route = (endsWithDelimiter ? route.slice(0, -delimiter.length) : route) + '(?:' + delimiter + '(?=$))?';
   }
@@ -1543,9 +1589,8 @@ function tokensToRegExp (tokens, keys, options) {
     route += strict && endsWithDelimiter ? '' : '(?=' + delimiter + '|$)';
   }
 
-  return attachKeys(new RegExp('^' + route, flags(options)), keys)
+  return attachKeys(new RegExp('^' + route, flags(options)), keys);
 }
-
 /**
  * Normalize the given path string, returning a regular expression.
  *
@@ -1558,81 +1603,42 @@ function tokensToRegExp (tokens, keys, options) {
  * @param  {Object=}               options
  * @return {!RegExp}
  */
-function pathToRegexp (path, keys, options) {
+
+
+function pathToRegexp(path, keys, options) {
   if (!isarray(keys)) {
-    options = /** @type {!Object} */ (keys || options);
+    options =
+    /** @type {!Object} */
+    keys || options;
     keys = [];
   }
 
   options = options || {};
 
   if (path instanceof RegExp) {
-    return regexpToRegexp(path, /** @type {!Array} */ (keys))
+    return regexpToRegexp(path,
+    /** @type {!Array} */
+    keys);
   }
 
   if (isarray(path)) {
-    return arrayToRegexp(/** @type {!Array} */ (path), /** @type {!Array} */ (keys), options)
+    return arrayToRegexp(
+    /** @type {!Array} */
+    path,
+    /** @type {!Array} */
+    keys, options);
   }
 
-  return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
+  return stringToRegexp(
+  /** @type {string} */
+  path,
+  /** @type {!Array} */
+  keys, options);
 }
 pathToRegexp_1.parse = parse_1;
 pathToRegexp_1.compile = compile_1;
 pathToRegexp_1.tokensToFunction = tokensToFunction_1;
 pathToRegexp_1.tokensToRegExp = tokensToRegExp_1;
-
-/** @license React v16.13.1
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
-Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
-function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}var AsyncMode=l;var ConcurrentMode=m;var ContextConsumer=k;var ContextProvider=h;var Element=c;var ForwardRef=n;var Fragment=e;var Lazy=t;var Memo=r;var Portal=d;
-var Profiler=g;var StrictMode=f;var Suspense=p;var isAsyncMode=function(a){return A(a)||z(a)===l};var isConcurrentMode=A;var isContextConsumer=function(a){return z(a)===k};var isContextProvider=function(a){return z(a)===h};var isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};var isForwardRef=function(a){return z(a)===n};var isFragment=function(a){return z(a)===e};var isLazy=function(a){return z(a)===t};
-var isMemo=function(a){return z(a)===r};var isPortal=function(a){return z(a)===d};var isProfiler=function(a){return z(a)===g};var isStrictMode=function(a){return z(a)===f};var isSuspense=function(a){return z(a)===p};
-var isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};var typeOf=z;
-
-var reactIs_production_min = {
-	AsyncMode: AsyncMode,
-	ConcurrentMode: ConcurrentMode,
-	ContextConsumer: ContextConsumer,
-	ContextProvider: ContextProvider,
-	Element: Element,
-	ForwardRef: ForwardRef,
-	Fragment: Fragment,
-	Lazy: Lazy,
-	Memo: Memo,
-	Portal: Portal,
-	Profiler: Profiler,
-	StrictMode: StrictMode,
-	Suspense: Suspense,
-	isAsyncMode: isAsyncMode,
-	isConcurrentMode: isConcurrentMode,
-	isContextConsumer: isContextConsumer,
-	isContextProvider: isContextProvider,
-	isElement: isElement,
-	isForwardRef: isForwardRef,
-	isFragment: isFragment,
-	isLazy: isLazy,
-	isMemo: isMemo,
-	isPortal: isPortal,
-	isProfiler: isProfiler,
-	isStrictMode: isStrictMode,
-	isSuspense: isSuspense,
-	isValidElementType: isValidElementType,
-	typeOf: typeOf
-};
-
-var reactIs = createCommonjsModule(function (module) {
-
-{
-  module.exports = reactIs_production_min;
-}
-});
 
 var FORWARD_REF_STATICS = {
   '$$typeof': true,
@@ -1653,19 +1659,13 @@ var TYPE_STATICS = {};
 TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
 TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
 
-// TODO: Replace with React.createContext once we can assume React 16+
-
 var createNamedContext = function createNamedContext(name) {
   var context = index();
   context.displayName = name;
   return context;
 };
 
-var historyContext =
-/*#__PURE__*/
-createNamedContext("Router-History");
-
-// TODO: Replace with React.createContext once we can assume React 16+
+var historyContext = /*#__PURE__*/createNamedContext("Router-History"); // TODO: Replace with React.createContext once we can assume React 16+
 
 var createNamedContext$1 = function createNamedContext(name) {
   var context = index();
@@ -1673,17 +1673,12 @@ var createNamedContext$1 = function createNamedContext(name) {
   return context;
 };
 
-var context =
-/*#__PURE__*/
-createNamedContext$1("Router");
-
+var context = /*#__PURE__*/createNamedContext$1("Router");
 /**
  * The public API for putting history on context.
  */
 
-var Router =
-/*#__PURE__*/
-function (_React$Component) {
+var Router = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(Router, _React$Component);
 
   Router.computeRootMatch = function computeRootMatch(pathname) {
@@ -1742,14 +1737,14 @@ function (_React$Component) {
   };
 
   _proto.render = function render() {
-    return react.createElement(context.Provider, {
+    return /*#__PURE__*/react.createElement(context.Provider, {
       value: {
         history: this.props.history,
         location: this.state.location,
         match: Router.computeRootMatch(this.state.location.pathname),
         staticContext: this.props.staticContext
       }
-    }, react.createElement(historyContext.Provider, {
+    }, /*#__PURE__*/react.createElement(historyContext.Provider, {
       children: this.props.children || null,
       value: this.props.history
     }));
@@ -1758,13 +1753,23 @@ function (_React$Component) {
   return Router;
 }(react.Component);
 
+if (import.meta.env.NODE_ENV !== "production") {
+  Router.propTypes = {
+    children: propTypes.node,
+    history: propTypes.object.isRequired,
+    staticContext: propTypes.object
+  };
+
+  Router.prototype.componentDidUpdate = function (prevProps) {
+    import.meta.env.NODE_ENV !== "production" ? warning(prevProps.history === this.props.history, "You cannot change <Router history>") : void 0;
+  };
+}
 /**
  * The public API for a <Router> that stores location in memory.
  */
 
-var MemoryRouter =
-/*#__PURE__*/
-function (_React$Component) {
+
+var MemoryRouter = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(MemoryRouter, _React$Component);
 
   function MemoryRouter() {
@@ -1782,7 +1787,7 @@ function (_React$Component) {
   var _proto = MemoryRouter.prototype;
 
   _proto.render = function render() {
-    return react.createElement(Router, {
+    return /*#__PURE__*/react.createElement(Router, {
       history: this.history,
       children: this.props.children
     });
@@ -1791,9 +1796,21 @@ function (_React$Component) {
   return MemoryRouter;
 }(react.Component);
 
-var Lifecycle =
-/*#__PURE__*/
-function (_React$Component) {
+if (import.meta.env.NODE_ENV !== "production") {
+  MemoryRouter.propTypes = {
+    initialEntries: propTypes.array,
+    initialIndex: propTypes.number,
+    getUserConfirmation: propTypes.func,
+    keyLength: propTypes.number,
+    children: propTypes.node
+  };
+
+  MemoryRouter.prototype.componentDidMount = function () {
+    import.meta.env.NODE_ENV !== "production" ? warning(!this.props.history, "<MemoryRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { MemoryRouter as Router }`.") : void 0;
+  };
+}
+
+/*#__PURE__*/(function (_React$Component) {
   _inheritsLoose(Lifecycle, _React$Component);
 
   function Lifecycle() {
@@ -1819,7 +1836,23 @@ function (_React$Component) {
   };
 
   return Lifecycle;
-}(react.Component);
+})(react.Component);
+
+if (import.meta.env.NODE_ENV !== "production") {
+  var messageType = propTypes.oneOfType([propTypes.func, propTypes.string]);
+  ({
+    when: propTypes.bool,
+    message: messageType.isRequired
+  });
+}
+
+if (import.meta.env.NODE_ENV !== "production") {
+  ({
+    push: propTypes.bool,
+    from: propTypes.string,
+    to: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired
+  });
+}
 
 var cache$1 = {};
 var cacheLimit$1 = 10000;
@@ -1900,14 +1933,22 @@ function matchPath(pathname, options) {
     };
   }, null);
 }
+
+function isEmptyChildren(children) {
+  return react.Children.count(children) === 0;
+}
+
+function evalChildrenDev(children, props, path) {
+  var value = children(props);
+  import.meta.env.NODE_ENV !== "production" ? warning(value !== undefined, "You returned `undefined` from the `children` function of " + ("<Route" + (path ? " path=\"" + path + "\"" : "") + ">, but you ") + "should have returned a React element or `null`") : void 0;
+  return value || null;
+}
 /**
  * The public API for matching a single path and rendering.
  */
 
 
-var Route =
-/*#__PURE__*/
-function (_React$Component) {
+var Route = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(Route, _React$Component);
 
   function Route() {
@@ -1919,8 +1960,8 @@ function (_React$Component) {
   _proto.render = function render() {
     var _this = this;
 
-    return react.createElement(context.Consumer, null, function (context$1) {
-      !context$1 ?  invariant(false) : void 0;
+    return /*#__PURE__*/react.createElement(context.Consumer, null, function (context$1) {
+      !context$1 ? import.meta.env.NODE_ENV !== "production" ? invariant(false, "You should not use <Route> outside a <Router>") : invariant(false) : void 0;
       var location = _this.props.location || context$1.location;
       var match = _this.props.computedMatch ? _this.props.computedMatch // <Switch> already computed the match for us
       : _this.props.path ? matchPath(location.pathname, _this.props) : context$1.match;
@@ -1940,29 +1981,57 @@ function (_React$Component) {
         children = null;
       }
 
-      return react.createElement(context.Provider, {
+      return /*#__PURE__*/react.createElement(context.Provider, {
         value: props
-      }, props.match ? children ? typeof children === "function" ?  children(props) : children : component ? react.createElement(component, props) : render ? render(props) : null : typeof children === "function" ?  children(props) : null);
+      }, props.match ? children ? typeof children === "function" ? import.meta.env.NODE_ENV !== "production" ? evalChildrenDev(children, props, _this.props.path) : children(props) : children : component ? /*#__PURE__*/react.createElement(component, props) : render ? render(props) : null : typeof children === "function" ? import.meta.env.NODE_ENV !== "production" ? evalChildrenDev(children, props, _this.props.path) : children(props) : null);
     });
   };
 
   return Route;
 }(react.Component);
 
-function addLeadingSlash$1(path) {
+if (import.meta.env.NODE_ENV !== "production") {
+  Route.propTypes = {
+    children: propTypes.oneOfType([propTypes.func, propTypes.node]),
+    component: function component(props, propName) {
+      if (props[propName] && !reactIs.isValidElementType(props[propName])) {
+        return new Error("Invalid prop 'component' supplied to 'Route': the prop is not a valid React component");
+      }
+    },
+    exact: propTypes.bool,
+    location: propTypes.object,
+    path: propTypes.oneOfType([propTypes.string, propTypes.arrayOf(propTypes.string)]),
+    render: propTypes.func,
+    sensitive: propTypes.bool,
+    strict: propTypes.bool
+  };
+
+  Route.prototype.componentDidMount = function () {
+    import.meta.env.NODE_ENV !== "production" ? warning(!(this.props.children && !isEmptyChildren(this.props.children) && this.props.component), "You should not use <Route component> and <Route children> in the same route; <Route component> will be ignored") : void 0;
+    import.meta.env.NODE_ENV !== "production" ? warning(!(this.props.children && !isEmptyChildren(this.props.children) && this.props.render), "You should not use <Route render> and <Route children> in the same route; <Route render> will be ignored") : void 0;
+    import.meta.env.NODE_ENV !== "production" ? warning(!(this.props.component && this.props.render), "You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored") : void 0;
+  };
+
+  Route.prototype.componentDidUpdate = function (prevProps) {
+    import.meta.env.NODE_ENV !== "production" ? warning(!(this.props.location && !prevProps.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.') : void 0;
+    import.meta.env.NODE_ENV !== "production" ? warning(!(!this.props.location && prevProps.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.') : void 0;
+  };
+}
+
+function addLeadingSlash(path) {
   return path.charAt(0) === "/" ? path : "/" + path;
 }
 
 function addBasename(basename, location) {
   if (!basename) return location;
   return _extends({}, location, {
-    pathname: addLeadingSlash$1(basename) + location.pathname
+    pathname: addLeadingSlash(basename) + location.pathname
   });
 }
 
-function stripBasename$1(basename, location) {
+function stripBasename(basename, location) {
   if (!basename) return location;
-  var base = addLeadingSlash$1(basename);
+  var base = addLeadingSlash(basename);
   if (location.pathname.indexOf(base) !== 0) return location;
   return _extends({}, location, {
     pathname: location.pathname.substr(base.length)
@@ -1975,7 +2044,7 @@ function createURL(location) {
 
 function staticHandler(methodName) {
   return function () {
-      invariant(false) ;
+    import.meta.env.NODE_ENV !== "production" ? invariant(false, "You cannot %s with <StaticRouter>") : invariant(false);
   };
 }
 
@@ -1988,9 +2057,7 @@ function noop() {}
  */
 
 
-var StaticRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var StaticRouter = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(StaticRouter, _React$Component);
 
   function StaticRouter() {
@@ -2046,10 +2113,10 @@ function (_React$Component) {
 
     var history = {
       createHref: function createHref(path) {
-        return addLeadingSlash$1(basename + createURL(path));
+        return addLeadingSlash(basename + createURL(path));
       },
       action: "POP",
-      location: stripBasename$1(basename, createLocation(location)),
+      location: stripBasename(basename, createLocation(location)),
       push: this.handlePush,
       replace: this.handleReplace,
       go: staticHandler(),
@@ -2058,7 +2125,7 @@ function (_React$Component) {
       listen: this.handleListen,
       block: this.handleBlock
     };
-    return react.createElement(Router, _extends({}, rest, {
+    return /*#__PURE__*/react.createElement(Router, _extends({}, rest, {
       history: history,
       staticContext: context
     }));
@@ -2067,13 +2134,23 @@ function (_React$Component) {
   return StaticRouter;
 }(react.Component);
 
+if (import.meta.env.NODE_ENV !== "production") {
+  StaticRouter.propTypes = {
+    basename: propTypes.string,
+    context: propTypes.object,
+    location: propTypes.oneOfType([propTypes.string, propTypes.object])
+  };
+
+  StaticRouter.prototype.componentDidMount = function () {
+    import.meta.env.NODE_ENV !== "production" ? warning(!this.props.history, "<StaticRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { StaticRouter as Router }`.") : void 0;
+  };
+}
 /**
  * The public API for rendering the first <Route> that matches.
  */
 
-var Switch =
-/*#__PURE__*/
-function (_React$Component) {
+
+var Switch = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(Switch, _React$Component);
 
   function Switch() {
@@ -2085,8 +2162,8 @@ function (_React$Component) {
   _proto.render = function render() {
     var _this = this;
 
-    return react.createElement(context.Consumer, null, function (context) {
-      !context ?  invariant(false) : void 0;
+    return /*#__PURE__*/react.createElement(context.Consumer, null, function (context) {
+      !context ? import.meta.env.NODE_ENV !== "production" ? invariant(false, "You should not use <Switch> outside a <Router>") : invariant(false) : void 0;
       var location = _this.props.location || context.location;
       var element, match; // We use React.Children.forEach instead of React.Children.toArray().find()
       // here because toArray adds keys to all child elements and we do not want
@@ -2094,7 +2171,7 @@ function (_React$Component) {
       // component at different URLs.
 
       react.Children.forEach(_this.props.children, function (child) {
-        if (match == null && react.isValidElement(child)) {
+        if (match == null && /*#__PURE__*/react.isValidElement(child)) {
           element = child;
           var path = child.props.path || child.props.from;
           match = path ? matchPath(location.pathname, _extends({}, child.props, {
@@ -2102,7 +2179,7 @@ function (_React$Component) {
           })) : context.match;
         }
       });
-      return match ? react.cloneElement(element, {
+      return match ? /*#__PURE__*/react.cloneElement(element, {
         location: location,
         computedMatch: match
       }) : null;
@@ -2112,15 +2189,47 @@ function (_React$Component) {
   return Switch;
 }(react.Component);
 
-var useContext = react.useContext;
+if (import.meta.env.NODE_ENV !== "production") {
+  Switch.propTypes = {
+    children: propTypes.node,
+    location: propTypes.object
+  };
+
+  Switch.prototype.componentDidUpdate = function (prevProps) {
+    import.meta.env.NODE_ENV !== "production" ? warning(!(this.props.location && !prevProps.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.') : void 0;
+    import.meta.env.NODE_ENV !== "production" ? warning(!(!this.props.location && prevProps.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.') : void 0;
+  };
+}
+
+react.useContext;
+
+if (import.meta.env.NODE_ENV !== "production") {
+  if (typeof window !== "undefined") {
+    var global$1 = window;
+    var key = "__react_router_build__";
+    var buildNames = {
+      cjs: "CommonJS",
+      esm: "ES modules",
+      umd: "UMD"
+    };
+
+    if (global$1[key] && global$1[key] !== "esm") {
+      var initialBuildName = buildNames[global$1[key]];
+      var secondaryBuildName = buildNames["esm"]; // TODO: Add link to article that explains in detail how to avoid
+      // loading 2 different builds.
+
+      throw new Error("You are loading the " + secondaryBuildName + " build of React Router " + ("on a page that is already running the " + initialBuildName + " ") + "build, so things won't work right.");
+    }
+
+    global$1[key] = "esm";
+  }
+}
 
 /**
  * The public API for a <Router> that uses HTML5 history.
  */
 
-var BrowserRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var BrowserRouter = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(BrowserRouter, _React$Component);
 
   function BrowserRouter() {
@@ -2138,7 +2247,7 @@ function (_React$Component) {
   var _proto = BrowserRouter.prototype;
 
   _proto.render = function render() {
-    return react.createElement(Router, {
+    return /*#__PURE__*/react.createElement(Router, {
       history: this.history,
       children: this.props.children
     });
@@ -2147,13 +2256,25 @@ function (_React$Component) {
   return BrowserRouter;
 }(react.Component);
 
+if (import.meta.env.NODE_ENV !== "production") {
+  BrowserRouter.propTypes = {
+    basename: propTypes.string,
+    children: propTypes.node,
+    forceRefresh: propTypes.bool,
+    getUserConfirmation: propTypes.func,
+    keyLength: propTypes.number
+  };
+
+  BrowserRouter.prototype.componentDidMount = function () {
+    import.meta.env.NODE_ENV !== "production" ? warning(!this.props.history, "<BrowserRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { BrowserRouter as Router }`.") : void 0;
+  };
+}
 /**
  * The public API for a <Router> that uses window.location.hash.
  */
 
-var HashRouter =
-/*#__PURE__*/
-function (_React$Component) {
+
+var HashRouter = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(HashRouter, _React$Component);
 
   function HashRouter() {
@@ -2171,7 +2292,7 @@ function (_React$Component) {
   var _proto = HashRouter.prototype;
 
   _proto.render = function render() {
-    return react.createElement(Router, {
+    return /*#__PURE__*/react.createElement(Router, {
       history: this.history,
       children: this.props.children
     });
@@ -2180,9 +2301,23 @@ function (_React$Component) {
   return HashRouter;
 }(react.Component);
 
+if (import.meta.env.NODE_ENV !== "production") {
+  HashRouter.propTypes = {
+    basename: propTypes.string,
+    children: propTypes.node,
+    getUserConfirmation: propTypes.func,
+    hashType: propTypes.oneOf(["hashbang", "noslash", "slash"])
+  };
+
+  HashRouter.prototype.componentDidMount = function () {
+    import.meta.env.NODE_ENV !== "production" ? warning(!this.props.history, "<HashRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { HashRouter as Router }`.") : void 0;
+  };
+}
+
 var resolveToLocation = function resolveToLocation(to, currentLocation) {
   return typeof to === "function" ? to(currentLocation) : to;
 };
+
 var normalizeToLocation = function normalizeToLocation(to, currentLocation) {
   return typeof to === "string" ? createLocation(to, null, null, currentLocation) : to;
 };
@@ -2238,8 +2373,12 @@ var LinkAnchor = forwardRef(function (_ref, forwardedRef) {
   /* eslint-disable-next-line jsx-a11y/anchor-has-content */
 
 
-  return react.createElement("a", props);
+  return /*#__PURE__*/react.createElement("a", props);
 });
+
+if (import.meta.env.NODE_ENV !== "production") {
+  LinkAnchor.displayName = "LinkAnchor";
+}
 /**
  * The public API for rendering a history-aware <a>.
  */
@@ -2253,8 +2392,8 @@ var Link = forwardRef(function (_ref2, forwardedRef) {
       innerRef = _ref2.innerRef,
       rest = _objectWithoutPropertiesLoose(_ref2, ["component", "replace", "to", "innerRef"]);
 
-  return react.createElement(context.Consumer, null, function (context) {
-    !context ?  invariant(false) : void 0;
+  return /*#__PURE__*/react.createElement(context.Consumer, null, function (context) {
+    !context ? import.meta.env.NODE_ENV !== "production" ? invariant(false, "You should not use <Link> outside a <Router>") : invariant(false) : void 0;
     var history = context.history;
     var location = normalizeToLocation(resolveToLocation(to, context.location), context.location);
     var href = location ? history.createHref(location) : "";
@@ -2275,9 +2414,24 @@ var Link = forwardRef(function (_ref2, forwardedRef) {
       props.innerRef = innerRef;
     }
 
-    return react.createElement(component, props);
+    return /*#__PURE__*/react.createElement(component, props);
   });
 });
+
+if (import.meta.env.NODE_ENV !== "production") {
+  var toType = propTypes.oneOfType([propTypes.string, propTypes.object, propTypes.func]);
+  var refType = propTypes.oneOfType([propTypes.string, propTypes.func, propTypes.shape({
+    current: propTypes.any
+  })]);
+  Link.displayName = "Link";
+  Link.propTypes = {
+    innerRef: refType,
+    onClick: propTypes.func,
+    replace: propTypes.bool,
+    target: propTypes.string,
+    to: toType.isRequired
+  };
+}
 
 var forwardRefShim$1 = function forwardRefShim(C) {
   return C;
@@ -2320,8 +2474,8 @@ var NavLink = forwardRef$1(function (_ref, forwardedRef) {
       innerRef = _ref.innerRef,
       rest = _objectWithoutPropertiesLoose(_ref, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
 
-  return react.createElement(context.Consumer, null, function (context) {
-    !context ?  invariant(false) : void 0;
+  return /*#__PURE__*/react.createElement(context.Consumer, null, function (context) {
+    !context ? import.meta.env.NODE_ENV !== "production" ? invariant(false, "You should not use <NavLink> outside a <Router>") : invariant(false) : void 0;
     var currentLocation = locationProp || context.location;
     var toLocation = normalizeToLocation(resolveToLocation(to, currentLocation), currentLocation);
     var path = toLocation.pathname; // Regex taken from: https://github.com/pillarjs/path-to-regexp/blob/master/index.js#L202
@@ -2351,8 +2505,25 @@ var NavLink = forwardRef$1(function (_ref, forwardedRef) {
       props.innerRef = innerRef;
     }
 
-    return react.createElement(Link, props);
+    return /*#__PURE__*/react.createElement(Link, props);
   });
 });
+
+if (import.meta.env.NODE_ENV !== "production") {
+  NavLink.displayName = "NavLink";
+  var ariaCurrentType = propTypes.oneOf(["page", "step", "location", "date", "time", "true"]);
+  NavLink.propTypes = _extends({}, Link.propTypes, {
+    "aria-current": ariaCurrentType,
+    activeClassName: propTypes.string,
+    activeStyle: propTypes.object,
+    className: propTypes.string,
+    exact: propTypes.bool,
+    isActive: propTypes.func,
+    location: propTypes.object,
+    sensitive: propTypes.bool,
+    strict: propTypes.bool,
+    style: propTypes.object
+  });
+}
 
 export { BrowserRouter, Link, Route, Switch };

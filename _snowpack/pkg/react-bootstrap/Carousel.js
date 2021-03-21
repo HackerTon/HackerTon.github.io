@@ -1,12 +1,11 @@
-import { _ as _objectWithoutPropertiesLoose, a as _extends } from '../common/objectWithoutPropertiesLoose-0056600f.js';
-import { u as useUncontrolled, a as useCommittedRef, b as useEventCallback } from '../common/createChainedFunction-e3793109.js';
-import { r as react } from '../common/index-0ff745df.js';
-import { c as classnames, u as useBootstrapPrefix } from '../common/ThemeProvider-ef92f2c1.js';
-import { c as createWithBsPrefix, t as triggerBrowserReflow, T as Transition, a as transitionEnd } from '../common/triggerBrowserReflow-1803f42f.js';
-import { p as propTypes$1 } from '../common/index-89cdc518.js';
-import { S as SafeAnchor } from '../common/SafeAnchor-87feafc9.js';
-import '../common/inheritsLoose-b67f434e.js';
-import '../common/index-1a921524.js';
+import { r as react, c as createCommonjsModule, g as getDefaultExportFromCjs } from '../common/index-d3589913.js';
+import { i as interopRequireDefault, _ as _extends_1, o as objectWithoutPropertiesLoose, c as classnames, T as ThemeProvider_1, a as interopRequireWildcard } from '../common/ThemeProvider-a10cbf64.js';
+import { u as useEventCallback, a as useCommittedRef, e as esm } from '../common/createChainedFunction-91af6b76.js';
+import { c as createWithBsPrefix_1, T as Transition, t as transitionEndListener_1, a as triggerBrowserReflow_1 } from '../common/triggerBrowserReflow-42a15417.js';
+import { p as propTypes } from '../common/index-f36ceb1e.js';
+import { S as SafeAnchor_1 } from '../common/SafeAnchor-933492d4.js';
+import '../common/extends-f0c40b8d.js';
+import '../common/index-1486f345.js';
 
 /**
  * Runs an effect only when the dependencies have changed, skipping the
@@ -176,25 +175,68 @@ function useTimeout() {
   }, []);
 }
 
-var CarouselCaption = createWithBsPrefix('carousel-caption');
+var CarouselCaption = createCommonjsModule(function (module, exports) {
 
-var CarouselItem = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _createWithBsPrefix = interopRequireDefault(createWithBsPrefix_1);
+
+var _default = (0, _createWithBsPrefix.default)('carousel-caption');
+
+exports.default = _default;
+module.exports = exports["default"];
+});
+
+var CarouselItem_1 = createCommonjsModule(function (module, exports) {
+
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _extends2 = interopRequireDefault(_extends_1);
+
+var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
+
+var _classnames = interopRequireDefault(classnames);
+
+var _react = interopRequireDefault(react);
+
+
+
+var CarouselItem = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
   var _ref$as = _ref.as,
       Component = _ref$as === void 0 ? 'div' : _ref$as,
       bsPrefix = _ref.bsPrefix,
       children = _ref.children,
       className = _ref.className,
-      props = _objectWithoutPropertiesLoose(_ref, ["as", "bsPrefix", "children", "className"]);
-
-  var finalClassName = classnames(className, useBootstrapPrefix(bsPrefix, 'carousel-item'));
-  return /*#__PURE__*/react.createElement(Component, _extends({
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["as", "bsPrefix", "children", "className"]);
+  var finalClassName = (0, _classnames.default)(className, (0, ThemeProvider_1.useBootstrapPrefix)(bsPrefix, 'carousel-item'));
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
     ref: ref
   }, props, {
     className: finalClassName
   }), children);
 });
-CarouselItem.displayName = 'CarouselItem';
 
+CarouselItem.displayName = 'CarouselItem';
+var _default = CarouselItem;
+exports.default = _default;
+module.exports = exports["default"];
+});
+
+var ElementChildren = createCommonjsModule(function (module, exports) {
+
+
+
+exports.__esModule = true;
+exports.map = map;
+exports.forEach = forEach;
+
+var _react = interopRequireDefault(react);
 /**
  * Iterates through children that are typically specified as `props.children`,
  * but only maps over children that are "valid elements".
@@ -204,10 +246,11 @@ CarouselItem.displayName = 'CarouselItem';
  *
  */
 
+
 function map(children, func) {
   var index = 0;
-  return react.Children.map(children, function (child) {
-    return /*#__PURE__*/react.isValidElement(child) ? func(child, index++) : child;
+  return _react.default.Children.map(children, function (child) {
+    return /*#__PURE__*/_react.default.isValidElement(child) ? func(child, index++) : child;
   });
 }
 /**
@@ -220,43 +263,90 @@ function map(children, func) {
 
 function forEach(children, func) {
   var index = 0;
-  react.Children.forEach(children, function (child) {
-    if ( /*#__PURE__*/react.isValidElement(child)) func(child, index++);
+
+  _react.default.Children.forEach(children, function (child) {
+    if ( /*#__PURE__*/_react.default.isValidElement(child)) func(child, index++);
   });
 }
+});
+
+var Carousel_1 = createCommonjsModule(function (module, exports) {
+
+
+
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _extends2 = interopRequireDefault(_extends_1);
+
+var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
+
+var _useEventCallback = interopRequireDefault(useEventCallback);
+
+var _useUpdateEffect = interopRequireDefault(useUpdateEffect);
+
+var _useCommittedRef = interopRequireDefault(useCommittedRef);
+
+var _useTimeout = interopRequireDefault(useTimeout);
+
+var _classnames = interopRequireDefault(classnames);
+
+var _Transition = interopRequireDefault(Transition);
+
+var _propTypes = interopRequireDefault(propTypes);
+
+var _react = interopRequireWildcard(react);
+
+
+
+var _CarouselCaption = interopRequireDefault(CarouselCaption);
+
+var _CarouselItem = interopRequireDefault(CarouselItem_1);
+
+
+
+var _SafeAnchor = interopRequireDefault(SafeAnchor_1);
+
+
+
+var _transitionEndListener = interopRequireDefault(transitionEndListener_1);
+
+var _triggerBrowserReflow = interopRequireDefault(triggerBrowserReflow_1);
 
 var SWIPE_THRESHOLD = 40;
-var propTypes = {
+var propTypes$1 = {
   /**
    * @default 'carousel'
    */
-  bsPrefix: propTypes$1.string,
-  as: propTypes$1.elementType,
+  bsPrefix: _propTypes.default.string,
+  as: _propTypes.default.elementType,
 
   /**
    * Enables animation on the Carousel as it transitions between slides.
    */
-  slide: propTypes$1.bool,
+  slide: _propTypes.default.bool,
 
-  /** Cross fade slides instead of the default slide animation */
-  fade: propTypes$1.bool,
+  /** Animates slides with a crossfade animation instead of the default slide animation */
+  fade: _propTypes.default.bool,
 
   /**
    * Show the Carousel previous and next arrows for changing the current slide
    */
-  controls: propTypes$1.bool,
+  controls: _propTypes.default.bool,
 
   /**
    * Show a set of slide position indicators
    */
-  indicators: propTypes$1.bool,
+  indicators: _propTypes.default.bool,
 
   /**
    * Controls the current visible slide
    *
    * @controllable onSelect
    */
-  activeIndex: propTypes$1.number,
+  activeIndex: _propTypes.default.number,
 
   /**
    * Callback fired when the active item changes.
@@ -267,7 +357,7 @@ var propTypes = {
    *
    * @controllable activeIndex
    */
-  onSelect: propTypes$1.func,
+  onSelect: _propTypes.default.func,
 
   /**
    * Callback fired when a slide transition starts.
@@ -275,7 +365,7 @@ var propTypes = {
    * ```js
    * (eventKey: number, direction: 'left' | 'right') => void
    */
-  onSlide: propTypes$1.func,
+  onSlide: _propTypes.default.func,
 
   /**
    * Callback fired when a slide transition ends.
@@ -283,50 +373,50 @@ var propTypes = {
    * ```js
    * (eventKey: number, direction: 'left' | 'right') => void
    */
-  onSlid: propTypes$1.func,
+  onSlid: _propTypes.default.func,
 
   /**
    * The amount of time to delay between automatically cycling an item. If `null`, carousel will not automatically cycle.
    */
-  interval: propTypes$1.number,
+  interval: _propTypes.default.number,
 
   /** Whether the carousel should react to keyboard events. */
-  keyboard: propTypes$1.bool,
+  keyboard: _propTypes.default.bool,
 
   /**
    * If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won't pause it.
    *
    * On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. Note that this is in addition to the above mouse behavior.
    */
-  pause: propTypes$1.oneOf(['hover', false]),
+  pause: _propTypes.default.oneOf(['hover', false]),
 
   /** Whether the carousel should cycle continuously or have hard stops. */
-  wrap: propTypes$1.bool,
+  wrap: _propTypes.default.bool,
 
   /**
    * Whether the carousel should support left/right swipe interactions on touchscreen devices.
    */
-  touch: propTypes$1.bool,
+  touch: _propTypes.default.bool,
 
   /** Override the default button icon for the "previous" control */
-  prevIcon: propTypes$1.node,
+  prevIcon: _propTypes.default.node,
 
   /**
    * Label shown to screen readers only, can be used to show the previous element
    * in the carousel.
    * Set to null to deactivate.
    */
-  prevLabel: propTypes$1.string,
+  prevLabel: _propTypes.default.string,
 
   /** Override the default button icon for the "next" control */
-  nextIcon: propTypes$1.node,
+  nextIcon: _propTypes.default.node,
 
   /**
    * Label shown to screen readers only, can be used to show the next element
    * in the carousel.
    * Set to null to deactivate.
    */
-  nextLabel: propTypes$1.string
+  nextLabel: _propTypes.default.string
 };
 var defaultProps = {
   slide: true,
@@ -339,12 +429,12 @@ var defaultProps = {
   pause: 'hover',
   wrap: true,
   touch: true,
-  prevIcon: /*#__PURE__*/react.createElement("span", {
+  prevIcon: /*#__PURE__*/_react.default.createElement("span", {
     "aria-hidden": "true",
     className: "carousel-control-prev-icon"
   }),
   prevLabel: 'Previous',
-  nextIcon: /*#__PURE__*/react.createElement("span", {
+  nextIcon: /*#__PURE__*/_react.default.createElement("span", {
     "aria-hidden": "true",
     className: "carousel-control-next-icon"
   }),
@@ -361,7 +451,7 @@ function isVisible(element) {
 }
 
 function CarouselFunc(uncontrolledProps, ref) {
-  var _useUncontrolled = useUncontrolled(uncontrolledProps, {
+  var _useUncontrolled = (0, esm.useUncontrolled)(uncontrolledProps, {
     activeIndex: 'onSelect'
   }),
       _useUncontrolled$as = _useUncontrolled.as,
@@ -392,24 +482,24 @@ function CarouselFunc(uncontrolledProps, ref) {
       nextLabel = _useUncontrolled.nextLabel,
       className = _useUncontrolled.className,
       children = _useUncontrolled.children,
-      props = _objectWithoutPropertiesLoose(_useUncontrolled, ["as", "bsPrefix", "slide", "fade", "controls", "indicators", "activeIndex", "onSelect", "onSlide", "onSlid", "interval", "keyboard", "onKeyDown", "pause", "onMouseOver", "onMouseOut", "wrap", "touch", "onTouchStart", "onTouchMove", "onTouchEnd", "prevIcon", "prevLabel", "nextIcon", "nextLabel", "className", "children"]);
+      props = (0, _objectWithoutPropertiesLoose2.default)(_useUncontrolled, ["as", "bsPrefix", "slide", "fade", "controls", "indicators", "activeIndex", "onSelect", "onSlide", "onSlid", "interval", "keyboard", "onKeyDown", "pause", "onMouseOver", "onMouseOut", "wrap", "touch", "onTouchStart", "onTouchMove", "onTouchEnd", "prevIcon", "prevLabel", "nextIcon", "nextLabel", "className", "children"]);
 
-  var prefix = useBootstrapPrefix(bsPrefix, 'carousel');
-  var nextDirectionRef = react.useRef(null);
+  var prefix = (0, ThemeProvider_1.useBootstrapPrefix)(bsPrefix, 'carousel');
+  var nextDirectionRef = (0, _react.useRef)(null);
 
-  var _useState = react.useState('next'),
+  var _useState = (0, _react.useState)('next'),
       direction = _useState[0],
       setDirection = _useState[1];
 
-  var _useState2 = react.useState(false),
+  var _useState2 = (0, _react.useState)(false),
       paused = _useState2[0],
       setPaused = _useState2[1];
 
-  var _useState3 = react.useState(false),
+  var _useState3 = (0, _react.useState)(false),
       isSliding = _useState3[0],
       setIsSliding = _useState3[1];
 
-  var _useState4 = react.useState(activeIndex || 0),
+  var _useState4 = (0, _react.useState)(activeIndex || 0),
       renderedActiveIndex = _useState4[0],
       setRenderedActiveIndex = _useState4[1];
 
@@ -427,7 +517,7 @@ function CarouselFunc(uncontrolledProps, ref) {
     setRenderedActiveIndex(activeIndex || 0);
   }
 
-  react.useEffect(function () {
+  (0, _react.useEffect)(function () {
     if (nextDirectionRef.current) {
       nextDirectionRef.current = null;
     }
@@ -436,15 +526,15 @@ function CarouselFunc(uncontrolledProps, ref) {
   var activeChildInterval; // Iterate to grab all of the children's interval values
   // (and count them, too)
 
-  forEach(children, function (child, index) {
+  (0, ElementChildren.forEach)(children, function (child, index) {
     ++numChildren;
 
     if (index === activeIndex) {
       activeChildInterval = child.props.interval;
     }
   });
-  var activeChildIntervalRef = useCommittedRef(activeChildInterval);
-  var prev = react.useCallback(function (event) {
+  var activeChildIntervalRef = (0, _useCommittedRef.default)(activeChildInterval);
+  var prev = (0, _react.useCallback)(function (event) {
     if (isSliding) {
       return;
     }
@@ -466,7 +556,7 @@ function CarouselFunc(uncontrolledProps, ref) {
     }
   }, [isSliding, renderedActiveIndex, onSelect, wrap, numChildren]); // This is used in the setInterval, so it should not invalidate.
 
-  var next = useEventCallback(function (event) {
+  var next = (0, _useEventCallback.default)(function (event) {
     if (isSliding) {
       return;
     }
@@ -487,8 +577,8 @@ function CarouselFunc(uncontrolledProps, ref) {
       onSelect(nextActiveIndex, event);
     }
   });
-  var elementRef = react.useRef();
-  react.useImperativeHandle(ref, function () {
+  var elementRef = (0, _react.useRef)();
+  (0, _react.useImperativeHandle)(ref, function () {
     return {
       element: elementRef.current,
       prev: prev,
@@ -496,13 +586,13 @@ function CarouselFunc(uncontrolledProps, ref) {
     };
   }); // This is used in the setInterval, so it should not invalidate.
 
-  var nextWhenVisible = useEventCallback(function () {
+  var nextWhenVisible = (0, _useEventCallback.default)(function () {
     if (!document.hidden && isVisible(elementRef.current)) {
       next();
     }
   });
   var slideDirection = direction === 'next' ? 'left' : 'right';
-  useUpdateEffect(function () {
+  (0, _useUpdateEffect.default)(function () {
     if (slide) {
       // These callbacks will be handled by the <Transition> callbacks.
       return;
@@ -518,21 +608,21 @@ function CarouselFunc(uncontrolledProps, ref) {
   }, [renderedActiveIndex]);
   var orderClassName = prefix + "-item-" + direction;
   var directionalClassName = prefix + "-item-" + slideDirection;
-  var handleEnter = react.useCallback(function (node) {
-    triggerBrowserReflow(node);
+  var handleEnter = (0, _react.useCallback)(function (node) {
+    (0, _triggerBrowserReflow.default)(node);
 
     if (onSlide) {
       onSlide(renderedActiveIndex, slideDirection);
     }
   }, [onSlide, renderedActiveIndex, slideDirection]);
-  var handleEntered = react.useCallback(function () {
+  var handleEntered = (0, _react.useCallback)(function () {
     setIsSliding(false);
 
     if (onSlid) {
       onSlid(renderedActiveIndex, slideDirection);
     }
   }, [onSlid, renderedActiveIndex, slideDirection]);
-  var handleKeyDown = react.useCallback(function (event) {
+  var handleKeyDown = (0, _react.useCallback)(function (event) {
     if (keyboard && !/input|textarea/i.test(event.target.tagName)) {
       switch (event.key) {
         case 'ArrowLeft':
@@ -551,7 +641,7 @@ function CarouselFunc(uncontrolledProps, ref) {
       onKeyDown(event);
     }
   }, [keyboard, onKeyDown, prev, next]);
-  var handleMouseOver = react.useCallback(function (event) {
+  var handleMouseOver = (0, _react.useCallback)(function (event) {
     if (pause === 'hover') {
       setPaused(true);
     }
@@ -560,17 +650,17 @@ function CarouselFunc(uncontrolledProps, ref) {
       onMouseOver(event);
     }
   }, [pause, onMouseOver]);
-  var handleMouseOut = react.useCallback(function (event) {
+  var handleMouseOut = (0, _react.useCallback)(function (event) {
     setPaused(false);
 
     if (onMouseOut) {
       onMouseOut(event);
     }
   }, [onMouseOut]);
-  var touchStartXRef = react.useRef(0);
-  var touchDeltaXRef = react.useRef(0);
-  var touchUnpauseTimeout = useTimeout();
-  var handleTouchStart = react.useCallback(function (event) {
+  var touchStartXRef = (0, _react.useRef)(0);
+  var touchDeltaXRef = (0, _react.useRef)(0);
+  var touchUnpauseTimeout = (0, _useTimeout.default)();
+  var handleTouchStart = (0, _react.useCallback)(function (event) {
     touchStartXRef.current = event.touches[0].clientX;
     touchDeltaXRef.current = 0;
 
@@ -582,7 +672,7 @@ function CarouselFunc(uncontrolledProps, ref) {
       onTouchStart(event);
     }
   }, [pause, onTouchStart]);
-  var handleTouchMove = react.useCallback(function (event) {
+  var handleTouchMove = (0, _react.useCallback)(function (event) {
     if (event.touches && event.touches.length > 1) {
       touchDeltaXRef.current = 0;
     } else {
@@ -593,7 +683,7 @@ function CarouselFunc(uncontrolledProps, ref) {
       onTouchMove(event);
     }
   }, [onTouchMove]);
-  var handleTouchEnd = react.useCallback(function (event) {
+  var handleTouchEnd = (0, _react.useCallback)(function (event) {
     if (touch) {
       var touchDeltaX = touchDeltaXRef.current;
 
@@ -617,8 +707,8 @@ function CarouselFunc(uncontrolledProps, ref) {
     }
   }, [touch, pause, prev, next, touchUnpauseTimeout, interval, onTouchEnd]);
   var shouldPlay = interval != null && !paused && !isSliding;
-  var intervalHandleRef = react.useRef();
-  react.useEffect(function () {
+  var intervalHandleRef = (0, _react.useRef)();
+  (0, _react.useEffect)(function () {
     var _ref, _activeChildIntervalR;
 
     if (!shouldPlay) {
@@ -632,7 +722,7 @@ function CarouselFunc(uncontrolledProps, ref) {
       }
     };
   }, [shouldPlay, next, activeChildIntervalRef, interval, nextWhenVisible]);
-  var indicatorOnClicks = react.useMemo(function () {
+  var indicatorOnClicks = (0, _react.useMemo)(function () {
     return indicators && Array.from({
       length: numChildren
     }, function (_, index) {
@@ -643,7 +733,7 @@ function CarouselFunc(uncontrolledProps, ref) {
       };
     });
   }, [indicators, numChildren, onSelect]);
-  return /*#__PURE__*/react.createElement(Component, _extends({
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
     ref: elementRef
   }, props, {
     onKeyDown: handleKeyDown,
@@ -652,49 +742,56 @@ function CarouselFunc(uncontrolledProps, ref) {
     onTouchStart: handleTouchStart,
     onTouchMove: handleTouchMove,
     onTouchEnd: handleTouchEnd,
-    className: classnames(className, prefix, slide && 'slide', fade && prefix + "-fade")
-  }), indicators && /*#__PURE__*/react.createElement("ol", {
+    className: (0, _classnames.default)(className, prefix, slide && 'slide', fade && prefix + "-fade")
+  }), indicators && /*#__PURE__*/_react.default.createElement("ol", {
     className: prefix + "-indicators"
-  }, map(children, function (_child, index) {
-    return /*#__PURE__*/react.createElement("li", {
+  }, (0, ElementChildren.map)(children, function (_child, index) {
+    return /*#__PURE__*/_react.default.createElement("li", {
       key: index,
       className: index === renderedActiveIndex ? 'active' : undefined,
       onClick: indicatorOnClicks ? indicatorOnClicks[index] : undefined
     });
-  })), /*#__PURE__*/react.createElement("div", {
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: prefix + "-inner"
-  }, map(children, function (child, index) {
+  }, (0, ElementChildren.map)(children, function (child, index) {
     var isActive = index === renderedActiveIndex;
-    return slide ? /*#__PURE__*/react.createElement(Transition, {
+    return slide ? /*#__PURE__*/_react.default.createElement(_Transition.default, {
       in: isActive,
       onEnter: isActive ? handleEnter : undefined,
       onEntered: isActive ? handleEntered : undefined,
-      addEndListener: transitionEnd
+      addEndListener: _transitionEndListener.default
     }, function (status) {
-      return /*#__PURE__*/react.cloneElement(child, {
-        className: classnames(child.props.className, isActive && status !== 'entered' && orderClassName, (status === 'entered' || status === 'exiting') && 'active', (status === 'entering' || status === 'exiting') && directionalClassName)
+      return /*#__PURE__*/_react.default.cloneElement(child, {
+        className: (0, _classnames.default)(child.props.className, isActive && status !== 'entered' && orderClassName, (status === 'entered' || status === 'exiting') && 'active', (status === 'entering' || status === 'exiting') && directionalClassName)
       });
-    }) : /*#__PURE__*/react.cloneElement(child, {
-      className: classnames(child.props.className, isActive && 'active')
+    }) : /*#__PURE__*/_react.default.cloneElement(child, {
+      className: (0, _classnames.default)(child.props.className, isActive && 'active')
     });
-  })), controls && /*#__PURE__*/react.createElement(react.Fragment, null, (wrap || activeIndex !== 0) && /*#__PURE__*/react.createElement(SafeAnchor, {
+  })), controls && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (wrap || activeIndex !== 0) && /*#__PURE__*/_react.default.createElement(_SafeAnchor.default, {
     className: prefix + "-control-prev",
     onClick: prev
-  }, prevIcon, prevLabel && /*#__PURE__*/react.createElement("span", {
+  }, prevIcon, prevLabel && /*#__PURE__*/_react.default.createElement("span", {
     className: "sr-only"
-  }, prevLabel)), (wrap || activeIndex !== numChildren - 1) && /*#__PURE__*/react.createElement(SafeAnchor, {
+  }, prevLabel)), (wrap || activeIndex !== numChildren - 1) && /*#__PURE__*/_react.default.createElement(_SafeAnchor.default, {
     className: prefix + "-control-next",
     onClick: next
-  }, nextIcon, nextLabel && /*#__PURE__*/react.createElement("span", {
+  }, nextIcon, nextLabel && /*#__PURE__*/_react.default.createElement("span", {
     className: "sr-only"
   }, nextLabel))));
 }
 
-var Carousel = /*#__PURE__*/react.forwardRef(CarouselFunc);
-Carousel.displayName = 'Carousel';
-Carousel.propTypes = propTypes;
-Carousel.defaultProps = defaultProps;
-Carousel.Caption = CarouselCaption;
-Carousel.Item = CarouselItem;
+var Carousel = /*#__PURE__*/_react.default.forwardRef(CarouselFunc);
 
-export default Carousel;
+Carousel.displayName = 'Carousel';
+Carousel.propTypes = propTypes$1;
+Carousel.defaultProps = defaultProps;
+Carousel.Caption = _CarouselCaption.default;
+Carousel.Item = _CarouselItem.default;
+var _default = Carousel;
+exports.default = _default;
+module.exports = exports["default"];
+});
+
+var __pika_web_default_export_for_treeshaking__ = /*@__PURE__*/getDefaultExportFromCjs(Carousel_1);
+
+export default __pika_web_default_export_for_treeshaking__;
