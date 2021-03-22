@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "../_snowpack/pkg/react.js";
-import Img from "../_snowpack/pkg/react-cool-img.js";
-import {Link} from "../_snowpack/pkg/react-router-dom.js";
+import React, {useEffect, useState} from "../snowpack/pkg/react.js";
+import Img from "../snowpack/pkg/react-cool-img.js";
+import {Link} from "../snowpack/pkg/react-router-dom.js";
 function Ads(props) {
   const choice = [
     "Android App",

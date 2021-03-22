@@ -1,11 +1,11 @@
-import React from "../_snowpack/pkg/react.js";
-import Col from "../_snowpack/pkg/react-bootstrap/Col.js";
-import Container from "../_snowpack/pkg/react-bootstrap/Container.js";
-import Jumbotron from "../_snowpack/pkg/react-bootstrap/Jumbotron.js";
-import Row from "../_snowpack/pkg/react-bootstrap/Row.js";
-import GifPlayer from "../_snowpack/pkg/react-gif-player.js";
-import {BrowserRouter as Router, Route, Switch} from "../_snowpack/pkg/react-router-dom.js";
-import Img from "../_snowpack/pkg/react-webp-image.js";
+import React from "../snowpack/pkg/react.js";
+import Col from "../snowpack/pkg/react-bootstrap/Col.js";
+import Container from "../snowpack/pkg/react-bootstrap/Container.js";
+import Jumbotron from "../snowpack/pkg/react-bootstrap/Jumbotron.js";
+import Row from "../snowpack/pkg/react-bootstrap/Row.js";
+import GifPlayer from "../snowpack/pkg/react-gif-player.js";
+import {BrowserRouter as Router, Route, Switch} from "../snowpack/pkg/react-router-dom.js";
+import Img from "../snowpack/pkg/react-webp-image.js";
 import Pic9w from "./image/discussiondigicha.webp.proxy.js";
 import Pic4w from "./image/group.webp.proxy.js";
 import Me1w from "./image/me1.webp.proxy.js";
@@ -28,9 +28,9 @@ import Gif from "./image/trashmoving.gif.proxy.js";
 import "./main.css.proxy.js";
 import {Hubcounter, Image as Image1} from "./module.js";
 import Octo from "./octocat.svg.proxy.js";
-import Navbar from "../_snowpack/pkg/react-bootstrap/Navbar.js";
-import Nav from "../_snowpack/pkg/react-bootstrap/Nav.js";
-import Image from "../_snowpack/pkg/react-bootstrap/Image.js";
+import Navbar from "../snowpack/pkg/react-bootstrap/Navbar.js";
+import Nav from "../snowpack/pkg/react-bootstrap/Nav.js";
+import Image from "../snowpack/pkg/react-bootstrap/Image.js";
 function Globalrouter() {
   return /* @__PURE__ */ React.createElement(Router, null, /* @__PURE__ */ React.createElement(Switch, null, /* @__PURE__ */ React.createElement(Route, {
     path: "/contact-form"
