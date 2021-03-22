@@ -1,14 +1,7 @@
 import React from "../snowpack/pkg/react.js";
-import Col from "../snowpack/pkg/react-bootstrap/Col.js";
-import Container from "../snowpack/pkg/react-bootstrap/Container.js";
-import Jumbotron from "../snowpack/pkg/react-bootstrap/Jumbotron.js";
-import Row from "../snowpack/pkg/react-bootstrap/Row.js";
-import GifPlayer from "../snowpack/pkg/react-gif-player.js";
 import {BrowserRouter as Router, Route, Switch} from "../snowpack/pkg/react-router-dom.js";
-import Img from "../snowpack/pkg/react-webp-image.js";
 import Pic9w from "./image/discussiondigicha.webp.proxy.js";
 import Pic4w from "./image/group.webp.proxy.js";
-import Me1w from "./image/me1.webp.proxy.js";
 import Pic8w from "./image/meandmodel.webp.proxy.js";
 import Pic7w from "./image/modelback.webp.proxy.js";
 import Pic6w from "./image/modelfront.webp.proxy.js";
@@ -27,10 +20,6 @@ import Workshop3 from "./image/workshop3.webp.proxy.js";
 import Gif from "./image/trashmoving.gif.proxy.js";
 import "./main.css.proxy.js";
 import {Hubcounter, Image as Image1} from "./module.js";
-import Octo from "./octocat.svg.proxy.js";
-import Navbar from "../snowpack/pkg/react-bootstrap/Navbar.js";
-import Nav from "../snowpack/pkg/react-bootstrap/Nav.js";
-import Image from "../snowpack/pkg/react-bootstrap/Image.js";
 function Globalrouter() {
   return /* @__PURE__ */ React.createElement(Router, null, /* @__PURE__ */ React.createElement(Switch, null, /* @__PURE__ */ React.createElement(Route, {
     path: "/contact-form"
@@ -40,64 +29,17 @@ function Globalrouter() {
 }
 const TopBottom = (props) => {
   return /* @__PURE__ */ React.createElement("div", {
-    className: ""
-  }, /* @__PURE__ */ React.createElement(Navbar, {
-    bg: "dark",
-    variant: "dark",
-    expand: "xl"
-  }, /* @__PURE__ */ React.createElement(Nav, {
-    className: "mr-auto"
-  }, /* @__PURE__ */ React.createElement(Nav.Link, {
-    href: "#one"
-  }, "Academic"))), /* @__PURE__ */ React.createElement(Jumbotron, null, /* @__PURE__ */ React.createElement(Container, {
-    fluid: true
-  }, /* @__PURE__ */ React.createElement(Row, null, /* @__PURE__ */ React.createElement(Col, {
-    xl: 2
-  }, /* @__PURE__ */ React.createElement(Image, {
-    src: Me1w,
-    alt: "myself",
-    roundedCircle: true
-  })), /* @__PURE__ */ React.createElement(Col, {
-    xl: 9
-  }, /* @__PURE__ */ React.createElement("h1", {
-    style: {color: "white", fontWeight: "bold"}
-  }, "About me"), /* @__PURE__ */ React.createElement("p", {
-    style: {color: "white"}
-  }, /* @__PURE__ */ React.createElement("h2", null, "LAM KEN LUN"), /* @__PURE__ */ React.createElement("h5", null, "UKM Computer Science B.sc student"), /* @__PURE__ */ React.createElement("h6", null, "A175960@siswa.ukm.edu.my"), /* @__PURE__ */ React.createElement("a", {
-    href: "https://github.com/HackerTon"
-  }, /* @__PURE__ */ React.createElement(Img, {
-    src: Octo,
-    style: {width: "56px"}
-  }))), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("p", {
-    style: {color: "white"}
-  }, " ", "I am a first year student at ", /* @__PURE__ */ React.createElement("a", {
-    style: {color: "#90caf9"},
-    href: "http://www.ftsm.ukm.my/"
-  }, "National University of Malaysia Falculty of Information Science and Technology"), ", where I pursue my interest in Machine Learning. Previously, I was a Form-6 student at Kajang Highschool majoring in Physics. Over the course of my first semester my contribution to School@UKM was where I managed the program prior by scheduling teams for their specific role in the program, prepared modules for the participants. Together with my team, I designed and was the primary instructor for teaching materials at School@UKM. The program consisted of 26 participants in 2019. Furthermore, I am also a Robotic teacher at ", /* @__PURE__ */ React.createElement("a", {
-    style: {color: "#90caf9"},
-    href: "http://www.csds.com.my/"
-  }, "CSDS Prima"), " ", "teaching children to build and code robots."), /* @__PURE__ */ React.createElement("p", {
-    style: {color: "white"}
-  }, "On the fun side, I developed more and more each day. I developed number of Deep Learning projects in Python (i.e:", /* @__PURE__ */ React.createElement("a", {
-    style: {color: "#90caf9"},
-    href: "https://github.com/HackerTon/end2endselfdriving"
-  }, "EndToEndselfDriving,  "), /* @__PURE__ */ React.createElement("a", {
-    style: {color: "#90caf9"},
-    href: "https://github.com/HackerTon/expanding-network"
-  }, "ExpandingNetwork,  "), /* @__PURE__ */ React.createElement("a", {
-    style: {color: "#90caf9"},
-    href: "https://github.com/HackerTon/imagenet_downloader"
-  }, "robosot-nav"), ") because I love the simplicity and efficiency of Python."))))), props.children, /* @__PURE__ */ React.createElement(Row, {
-    style: {
-      textAlign: "center",
-      color: "white",
-      backgroundColor: "#343a40",
-      height: "100px",
-      width: "100%"
-    }
-  }, /* @__PURE__ */ React.createElement(Col, null, /* @__PURE__ */ React.createElement("div", {
-    id: "httem"
-  }, "Designed and coded by hackerton"), /* @__PURE__ */ React.createElement("h6", null, "Copyright © ", new Date().getFullYear(), " LAM KEN LUN, All Rights Reserved"))));
+    className: "p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4"
+  }, /* @__PURE__ */ React.createElement("div", {
+    className: "flex-shrink-0"
+  }, /* @__PURE__ */ React.createElement("img", {
+    className: "h-12 w-12",
+    alt: true
+  })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", {
+    className: "text-xl font-medium text-black"
+  }, "ChitChat"), /* @__PURE__ */ React.createElement("p", {
+    className: "text-gray-500"
+  }, "You have a new message!")));
 };
 function Mainpage() {
   return /* @__PURE__ */ React.createElement(Container, null, /* @__PURE__ */ React.createElement(Row, null, /* @__PURE__ */ React.createElement(Col, {

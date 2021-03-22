@@ -1,17 +1,8 @@
 {
   "imports": {
     "react": "./react.js",
-    "react-bootstrap/Col": "./react-bootstrap/Col.js",
-    "react-bootstrap/Container": "./react-bootstrap/Container.js",
-    "react-bootstrap/Image": "./react-bootstrap/Image.js",
-    "react-bootstrap/Jumbotron": "./react-bootstrap/Jumbotron.js",
-    "react-bootstrap/Nav": "./react-bootstrap/Nav.js",
-    "react-bootstrap/Navbar": "./react-bootstrap/Navbar.js",
-    "react-bootstrap/Row": "./react-bootstrap/Row.js",
     "react-cool-img": "./react-cool-img.js",
     "react-dom": "./react-dom.js",
-    "react-gif-player": "./react-gif-player.js",
-    "react-router-dom": "./react-router-dom.js",
-    "react-webp-image": "./react-webp-image.js"
+    "react-router-dom": "./react-router-dom.js"
   }
 }
