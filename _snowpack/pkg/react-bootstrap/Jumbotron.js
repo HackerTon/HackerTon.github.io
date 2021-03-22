@@ -1,11 +1,28 @@
-import { _ as _objectWithoutPropertiesLoose, a as _extends } from '../common/objectWithoutPropertiesLoose-0056600f.js';
-import { r as react } from '../common/index-0ff745df.js';
-import { u as useBootstrapPrefix, c as classnames } from '../common/ThemeProvider-ef92f2c1.js';
+import { g as getDefaultExportFromCjs, c as createCommonjsModule, r as react } from '../common/index-0ff745df.js';
+import { i as interopRequireDefault, _ as _extends_1, o as objectWithoutPropertiesLoose, c as classnames, T as ThemeProvider_1 } from '../common/ThemeProvider-ce5a0fa3.js';
+
+var Jumbotron_1 = createCommonjsModule(function (module, exports) {
+
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _extends2 = interopRequireDefault(_extends_1);
+
+var _objectWithoutPropertiesLoose2 = interopRequireDefault(objectWithoutPropertiesLoose);
+
+var _react = interopRequireDefault(react);
+
+var _classnames = interopRequireDefault(classnames);
+
+
 
 var defaultProps = {
   fluid: false
 };
-var Jumbotron = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
+
+var Jumbotron = /*#__PURE__*/_react.default.forwardRef(function (_ref, ref) {
   var _classes;
 
   var _ref$as = _ref.as,
@@ -13,17 +30,23 @@ var Jumbotron = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
       className = _ref.className,
       fluid = _ref.fluid,
       bsPrefix = _ref.bsPrefix,
-      props = _objectWithoutPropertiesLoose(_ref, ["as", "className", "fluid", "bsPrefix"]);
-
-  bsPrefix = useBootstrapPrefix(bsPrefix, 'jumbotron');
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["as", "className", "fluid", "bsPrefix"]);
+  bsPrefix = (0, ThemeProvider_1.useBootstrapPrefix)(bsPrefix, 'jumbotron');
   var classes = (_classes = {}, _classes[bsPrefix] = true, _classes[bsPrefix + "-fluid"] = fluid, _classes);
-  return /*#__PURE__*/react.createElement(Component, _extends({
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
     ref: ref
   }, props, {
-    className: classnames(className, classes)
+    className: (0, _classnames.default)(className, classes)
   }));
 });
+
 Jumbotron.defaultProps = defaultProps;
 Jumbotron.displayName = 'Jumbotron';
+var _default = Jumbotron;
+exports.default = _default;
+module.exports = exports["default"];
+});
 
-export default Jumbotron;
+var __pika_web_default_export_for_treeshaking__ = /*@__PURE__*/getDefaultExportFromCjs(Jumbotron_1);
+
+export default __pika_web_default_export_for_treeshaking__;

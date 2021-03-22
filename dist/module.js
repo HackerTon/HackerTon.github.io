@@ -27,7 +27,7 @@ function Ads(props) {
   }, "Want a custom", /* @__PURE__ */ React.createElement("div", {
     className: "change-cell",
     style: {fontSize: "45px", display: "inline"}
-  }, "\xA0", text, "\xA0"), "for your task?"), /* @__PURE__ */ React.createElement("div", {
+  }, " ", text, " "), "for your task?"), /* @__PURE__ */ React.createElement("div", {
     className: "text-white"
   }, "Drop a message to", " ", /* @__PURE__ */ React.createElement(Link, {
     to: "/contact-form"

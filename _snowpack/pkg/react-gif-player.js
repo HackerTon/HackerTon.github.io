@@ -203,7 +203,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		return classes.join(' ');
 	}
 
-	if (  module.exports) {
+	if ( module.exports) {
 		module.exports = classNames;
 	} else {
 		// register as 'classnames', consistent with npm package name
@@ -243,7 +243,7 @@ var classnames = __webpack_require__(3);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // EXTERNAL MODULE: ./src/GifPlayer.scss
-var src_GifPlayer = __webpack_require__(4);
+__webpack_require__(4);
 
 // CONCATENATED MODULE: ./src/GifPlayer.js
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -422,11 +422,11 @@ function (_React$Component) {
     var _this4 = this;
 
     // extract these props but pass down the rest
-    var _this$props = this.props,
-        autoplay = _this$props.autoplay,
-        pauseRef = _this$props.pauseRef,
-        onTogglePlay = _this$props.onTogglePlay,
-        rest = src_objectWithoutPropertiesLoose(_this$props, ["autoplay", "pauseRef", "onTogglePlay"]);
+    var _this$props = this.props;
+        _this$props.autoplay;
+        _this$props.pauseRef;
+        _this$props.onTogglePlay;
+        var rest = src_objectWithoutPropertiesLoose(_this$props, ["autoplay", "pauseRef", "onTogglePlay"]);
 
     var _this$state2 = this.state,
         actualGif = _this$state2.actualGif,
@@ -453,7 +453,7 @@ src_GifPlayerContainer.propTypes = {
   pauseRef: external_root_PropTypes_commonjs_prop_types_commonjs2_prop_types_amd_prop_types_default.a.func,
   onTogglePlay: external_root_PropTypes_commonjs_prop_types_commonjs2_prop_types_amd_prop_types_default.a.func
 };
-/* harmony default export */ var src = __webpack_exports__["default"] = (src_GifPlayerContainer);
+/* harmony default export */ __webpack_exports__["default"] = (src_GifPlayerContainer);
 
 /***/ })
 /******/ ])["default"];

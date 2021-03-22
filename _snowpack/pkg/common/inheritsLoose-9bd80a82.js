@@ -31,4 +31,19 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
-export { _objectWithoutPropertiesLoose as _, _extends as a };
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  _setPrototypeOf(subClass, superClass);
+}
+
+export { _objectWithoutPropertiesLoose as _, _extends as a, _inheritsLoose as b };

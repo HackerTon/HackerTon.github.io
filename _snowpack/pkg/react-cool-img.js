@@ -266,8 +266,7 @@ var Img = /*#__PURE__*/react.forwardRef(function (_ref, ref) {
 
   var setRef = function setRef(el) {
     if (!el) return;
-    setImg(el); // @ts-expect-error
-    // eslint-disable-next-line no-param-reassign
+    setImg(el); // eslint-disable-next-line no-param-reassign
 
     if (ref) ref.current = el;
   };
