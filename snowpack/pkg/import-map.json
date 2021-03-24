@@ -1,8 +1,0 @@
-{
-  "imports": {
-    "react": "./react.js",
-    "react-cool-img": "./react-cool-img.js",
-    "react-dom": "./react-dom.js",
-    "react-router-dom": "./react-router-dom.js"
-  }
-}
