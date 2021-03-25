@@ -36,7 +36,7 @@ const Maintenance = () => {
     className: "text-4xl font-semibold"
   }, "This Page is still under maintenance"), /* @__PURE__ */ React.createElement("h1", {
     className: "text-3xl text-gray-600"
-  }, "Thank you for your patient")), /* @__PURE__ */ React.createElement("div", {
+  }, "Thank you for your patience")), /* @__PURE__ */ React.createElement("div", {
     className: "bg-white pt-2 pb-2 pl-4 min-w-full"
   }, /* @__PURE__ */ React.createElement("div", {
     className: ""
