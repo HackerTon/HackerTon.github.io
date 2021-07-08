@@ -1,1 +1,1 @@
-export default "/dist/image/meandmodel.webp";
+export default"/dist/image/meandmodel.webp";

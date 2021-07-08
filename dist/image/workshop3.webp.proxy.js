@@ -1,1 +1,1 @@
-export default "/dist/image/workshop3.webp";
+export default"/dist/image/workshop3.webp";

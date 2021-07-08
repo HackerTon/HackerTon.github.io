@@ -1,1 +1,1 @@
-export default "/dist/image/group.webp";
+export default"/dist/image/group.webp";

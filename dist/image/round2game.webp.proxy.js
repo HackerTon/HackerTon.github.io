@@ -1,1 +1,1 @@
-export default "/dist/image/round2game.webp";
+export default"/dist/image/round2game.webp";

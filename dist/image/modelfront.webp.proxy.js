@@ -1,1 +1,1 @@
-export default "/dist/image/modelfront.webp";
+export default"/dist/image/modelfront.webp";

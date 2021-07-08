@@ -1,1 +1,1 @@
-export default "/dist/image/pic5.webp";
+export default"/dist/image/pic5.webp";

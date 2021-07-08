@@ -1,8 +1,1 @@
-import { r as react } from './common/index-ae389540.js';
-export { r as default } from './common/index-ae389540.js';
-
-
-
-var useEffect = react.useEffect;
-var useState = react.useState;
-export { useEffect, useState };
+import{r as e}from"./common/index-ae389540.js";export{r as default}from"./common/index-ae389540.js";var a=e.forwardRef,r=e.useEffect,f=e.useImperativeHandle,t=e.useRef,s=e.useState;export{a as forwardRef,r as useEffect,f as useImperativeHandle,t as useRef,s as useState};

@@ -1,10 +1,1 @@
-import * as __SNOWPACK_ENV__ from '../snowpack/env.js';
-import.meta.env = __SNOWPACK_ENV__;
-
-import React from "../snowpack/pkg/react.js";
-import ReactDOM from "../snowpack/pkg/react-dom.js";
-import Globalrouter from "./navigator/router.js";
-ReactDOM.render(/* @__PURE__ */ React.createElement(React.StrictMode, null, /* @__PURE__ */ React.createElement(Globalrouter, null)), document.getElementById("root"));
-if (undefined /* [snowpack] import.meta.hot */ ) {
-  undefined /* [snowpack] import.meta.hot */ .accept();
-}
+import*as t from"../snowpack/env.js";import.meta.env=t;import e from"../snowpack/pkg/react.js";import r from"../snowpack/pkg/react-dom.js";import o from"./navigator/router.js";r.render(e.createElement(e.StrictMode,null,e.createElement(o,null)),document.getElementById("root"));

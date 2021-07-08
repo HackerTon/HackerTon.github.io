@@ -1,1 +1,1 @@
-export default "/dist/image/alanme.webp";
+export default"/dist/image/alanme.webp";

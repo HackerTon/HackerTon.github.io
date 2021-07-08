@@ -1,5 +1,6 @@
 {
   "imports": {
+    "moment": "./moment.js",
     "react": "./react.js",
     "react-dom": "./react-dom.js",
     "react-lazy-load-image-component": "./react-lazy-load-image-component.js",

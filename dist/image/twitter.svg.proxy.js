@@ -1,1 +1,1 @@
-export default "/dist/image/twitter.svg";
+export default"/dist/image/twitter.svg";

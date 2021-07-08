@@ -1,1 +1,1 @@
-export default "/dist/image/octocat.svg";
+export default"/dist/image/octocat.svg";

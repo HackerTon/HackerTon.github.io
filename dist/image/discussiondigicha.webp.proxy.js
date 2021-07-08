@@ -1,1 +1,1 @@
-export default "/dist/image/discussiondigicha.webp";
+export default"/dist/image/discussiondigicha.webp";

@@ -1,1 +1,1 @@
-export default "/dist/image/webinar4.webp";
+export default"/dist/image/webinar4.webp";
