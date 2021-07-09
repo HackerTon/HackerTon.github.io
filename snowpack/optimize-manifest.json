@@ -34,6 +34,7 @@
         "/dist/image/workshop4.webp.proxy.js",
         "/dist/index.js",
         "/dist/navigator/router.js",
+        "/dist/ui/component.js",
         "/dist/ui/main.css.proxy.js",
         "/dist/ui/main.js",
         "/snowpack/env.js",
