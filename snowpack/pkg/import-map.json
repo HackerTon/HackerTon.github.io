@@ -1,7 +1,5 @@
 {
   "imports": {
-    "firebase/analytics": "./firebase/analytics.js",
-    "firebase/app": "./firebase/app.js",
     "moment": "./moment.js",
     "react": "./react.js",
     "react-dom": "./react-dom.js",
