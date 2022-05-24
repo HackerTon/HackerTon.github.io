@@ -1,0 +1,13 @@
+{
+  "imports": {
+    "firebase/analytics": "./firebase/analytics.js",
+    "firebase/app": "./firebase/app.js",
+    "moment": "./moment.js",
+    "react": "./react.js",
+    "react-dom": "./react-dom.js",
+    "react-lazy-load-image-component": "./react-lazy-load-image-component.js",
+    "react-lazy-load-image-component/src/effects/blur.css": "./react-lazy-load-image-component/src/effects/blur.css",
+    "react-router-dom": "./react-router-dom.js",
+    "react-scroll-parallax": "./react-scroll-parallax.js"
+  }
+}

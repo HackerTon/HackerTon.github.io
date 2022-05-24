@@ -1,0 +1,1 @@
+import*as t from"../snowpack/env.js";import.meta.env=t;import e from"../snowpack/pkg/react.js";import r from"../snowpack/pkg/react-dom.js";import o from"./navigator/router.js";r.render(e.createElement(e.StrictMode,null,e.createElement(o,null)),document.getElementById("root"));
