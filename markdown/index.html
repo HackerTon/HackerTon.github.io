@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/favicon.ico">
     <title>Markdowns</title>
-  <link rel="stylesheet" href="/astrofiles/markdown.c0668b44.css" /></head>
+  <link rel="stylesheet" href="/astrofiles/markdown.70e85303.css" /></head>
 
   <body class="bg-[#301934]">
     <div class="flex place-content-center p-5">
@@ -29,7 +29,7 @@ a</p>
               </div>
               <div class="max-h-52 min-h-min overflow-clip p-5 bg-white rounded-b-lg rounded-tr-lg">
                 <h1 id="testing-out-code">Testing out code</h1>
-<pre is:raw="" class="astro-code" style="background-color: #2e3440ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #81A1C1">int</span><span style="color: #D8DEE9FF"> </span><span style="color: #88C0D0">fun</span><span style="color: #ECEFF4">()</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">{</span></span>
+<pre is:raw="" class="astro-code nord" style="background-color: #2e3440ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #81A1C1">int</span><span style="color: #D8DEE9FF"> </span><span style="color: #88C0D0">fun</span><span style="color: #ECEFF4">()</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">{</span></span>
 <span class="line"><span style="color: #D8DEE9FF">    cout </span><span style="color: #81A1C1">&#x3C;&#x3C;</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">"</span><span style="color: #A3BE8C">hello</span><span style="color: #ECEFF4">"</span><span style="color: #81A1C1">;</span></span>
 <span class="line"><span style="color: #ECEFF4">}</span></span></code></pre>
               </div>
@@ -42,7 +42,7 @@ a</p>
               <div class="max-h-52 min-h-min overflow-clip p-5 bg-white rounded-b-lg rounded-tr-lg">
                 <h1 id="explanation-about-the-code">Explanation about the code</h1>
 <h2 id="setup-function">Setup Function</h2>
-<pre is:raw="" class="astro-code" style="background-color: #2e3440ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #616E88">// Basic Controller for wifi, mdns and ota</span></span>
+<pre is:raw="" class="astro-code nord" style="background-color: #2e3440ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #616E88">// Basic Controller for wifi, mdns and ota</span></span>
 <span class="line"><span style="color: #81A1C1">void</span><span style="color: #D8DEE9FF"> </span><span style="color: #88C0D0">setup</span><span style="color: #ECEFF4">()</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">{</span></span>
 <span class="line"><span style="color: #D8DEE9FF">    </span><span style="color: #D8DEE9">Serial</span><span style="color: #ECEFF4">.</span><span style="color: #88C0D0">begin</span><span style="color: #ECEFF4">(</span><span style="color: #B48EAD">115200</span><span style="color: #ECEFF4">)</span><span style="color: #81A1C1">;</span></span>
 <span class="line"><span style="color: #D8DEE9FF">    </span><span style="color: #D8DEE9">dht</span><span style="color: #ECEFF4">.</span><span style="color: #88C0D0">begin</span><span style="color: #ECEFF4">()</span><span style="color: #81A1C1">;</span></span>
@@ -51,11 +51,11 @@ a</p>
 <span class="line"></span>
 <span class="line"><span style="color: #616E88">    // begin_webserver();</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#ifdef</span><span style="color: #5E81AC"> </span><span style="color: #88C0D0">DEBUG</span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#ifdef</span><span style="color: #5E81AC"> </span><span style="color: #88C0D0">DEBUG</span></span>
 <span class="line"><span style="color: #D8DEE9FF">    </span><span style="color: #D8DEE9">controller</span><span style="color: #ECEFF4">.</span><span style="color: #88C0D0">enable_wifi_station</span><span style="color: #ECEFF4">(</span><span style="color: #D8DEE9FF">SSID</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> PASSWORD</span><span style="color: #ECEFF4">)</span><span style="color: #81A1C1">;</span></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">else</span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">else</span></span>
 <span class="line"><span style="color: #D8DEE9FF">    </span><span style="color: #D8DEE9">controller</span><span style="color: #ECEFF4">.</span><span style="color: #88C0D0">enable_wifi_ap</span><span style="color: #ECEFF4">(</span><span style="color: #D8DEE9FF">SSID</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> PASSWORD</span><span style="color: #ECEFF4">)</span><span style="color: #81A1C1">;</span></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">endif</span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">endif</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #D8DEE9FF">    </span><span style="color: #81A1C1">if</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">(</span><span style="color: #81A1C1">!</span><span style="color: #D8DEE9">display</span><span style="color: #ECEFF4">.</span><span style="color: #88C0D0">begin</span><span style="color: #ECEFF4">(</span><span style="color: #D8DEE9FF">SSD1306_SWITCHCAPVCC</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">0x</span><span style="color: #B48EAD">3C</span><span style="color: #ECEFF4">))</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">{</span></span>
 <span class="line"><span style="color: #D8DEE9FF">        </span><span style="color: #D8DEE9">Serial</span><span style="color: #ECEFF4">.</span><span style="color: #88C0D0">println</span><span style="color: #ECEFF4">(</span><span style="color: #88C0D0">F</span><span style="color: #ECEFF4">(</span><span style="color: #ECEFF4">"</span><span style="color: #A3BE8C">SSD1306 allocation failed</span><span style="color: #ECEFF4">"</span><span style="color: #ECEFF4">))</span><span style="color: #81A1C1">;</span></span>
@@ -73,7 +73,7 @@ that will connect to our home wifi by calling <code>controller.enable_wifi_stati
 function with <code>SSID</code> and <code>PASSWORD</code> argument. After that, we will need to initialize our OLED display with <code>display.begin(SSD1306_SWITCHCAPVCC, 0x3C)</code>. Finally we will clear our display by
 calling <code>display.display()</code>.</p>
 <h2 id="loop-function">Loop Function</h2>
-<pre is:raw="" class="astro-code" style="background-color: #2e3440ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #81A1C1">void</span><span style="color: #D8DEE9FF"> </span><span style="color: #88C0D0">loop</span><span style="color: #ECEFF4">()</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">{</span></span>
+<pre is:raw="" class="astro-code nord" style="background-color: #2e3440ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #81A1C1">void</span><span style="color: #D8DEE9FF"> </span><span style="color: #88C0D0">loop</span><span style="color: #ECEFF4">()</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">{</span></span>
 <span class="line"><span style="color: #D8DEE9FF">    </span><span style="color: #88C0D0">delay</span><span style="color: #ECEFF4">(</span><span style="color: #B48EAD">1000</span><span style="color: #ECEFF4">)</span><span style="color: #81A1C1">;</span></span>
 <span class="line"><span style="color: #D8DEE9FF">    </span><span style="color: #8FBCBB">sensors_event_t</span><span style="color: #D8DEE9FF"> event</span><span style="color: #81A1C1">;</span></span>
 <span class="line"></span>
@@ -102,23 +102,23 @@ calling <code>display.display()</code>.</p>
 then store them in <code>float temperature</code> and <code>float humidity</code>. We will then write out our values
 in OLED.</p>
 <h2 id="constant-header">Constant header</h2>
-<pre is:raw="" class="astro-code" style="background-color: #2e3440ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">Arduino.h</span><span style="color: #ECEFF4">></span></span>
+<pre is:raw="" class="astro-code nord" style="background-color: #2e3440ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">Arduino.h</span><span style="color: #ECEFF4">></span></span>
 <span class="line"><span style="color: #616E88">// #include &#x3C;BH1750.h></span></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">DHT_U.h</span><span style="color: #ECEFF4">></span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">DHT_U.h</span><span style="color: #ECEFF4">></span></span>
 <span class="line"><span style="color: #616E88">// #include &#x3C;WebServer.h></span></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">Adafruit_GFX.h</span><span style="color: #ECEFF4">></span></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">Adafruit_SSD1306.h</span><span style="color: #ECEFF4">></span></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">Wire.h</span><span style="color: #ECEFF4">></span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">Adafruit_GFX.h</span><span style="color: #ECEFF4">></span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">Adafruit_SSD1306.h</span><span style="color: #ECEFF4">></span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">include</span><span style="color: #5E81AC"> </span><span style="color: #ECEFF4">&#x3C;</span><span style="color: #A3BE8C">Wire.h</span><span style="color: #ECEFF4">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">define</span><span style="color: #5E81AC"> </span><span style="color: #88C0D0">DEBUG</span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">define</span><span style="color: #5E81AC"> </span><span style="color: #88C0D0">DEBUG</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#ifdef</span><span style="color: #5E81AC"> </span><span style="color: #88C0D0">DEBUG</span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#ifdef</span><span style="color: #5E81AC"> </span><span style="color: #88C0D0">DEBUG</span></span>
 <span class="line"><span style="color: #81A1C1">const</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">char</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">*</span><span style="color: #D8DEE9FF">SSID </span><span style="color: #81A1C1">=</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">""</span><span style="color: #81A1C1">;</span></span>
 <span class="line"><span style="color: #81A1C1">const</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">char</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">*</span><span style="color: #D8DEE9FF">PASSWORD </span><span style="color: #81A1C1">=</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">""</span><span style="color: #81A1C1">;</span></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">else</span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">else</span></span>
 <span class="line"><span style="color: #81A1C1">const</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">char</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">*</span><span style="color: #D8DEE9FF">SSID </span><span style="color: #81A1C1">=</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">""</span><span style="color: #81A1C1">;</span></span>
 <span class="line"><span style="color: #81A1C1">const</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">char</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">*</span><span style="color: #D8DEE9FF">PASSWORD </span><span style="color: #81A1C1">=</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">""</span><span style="color: #81A1C1">;</span></span>
-<span class="line"><span style="color: #5E81AC; font-style: italic">#</span><span style="color: #81A1C1">endif</span></span>
+<span class="line"><span style="color: #5E81AC; font-weight: bold">#</span><span style="color: #81A1C1">endif</span></span>
 <span class="line"><span style="color: #81A1C1">const</span><span style="color: #D8DEE9FF"> byte DHTPIN </span><span style="color: #81A1C1">=</span><span style="color: #D8DEE9FF"> </span><span style="color: #B48EAD">4</span><span style="color: #81A1C1">;</span></span>
 <span class="line"><span style="color: #81A1C1">const</span><span style="color: #D8DEE9FF"> byte DHTTYPE </span><span style="color: #81A1C1">=</span><span style="color: #D8DEE9FF"> DHT11</span><span style="color: #81A1C1">;</span></span>
 <span class="line"><span style="color: #81A1C1">const</span><span style="color: #D8DEE9FF"> byte BH1750ADDR </span><span style="color: #81A1C1">=</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">0x</span><span style="color: #B48EAD">23</span><span style="color: #81A1C1">;</span></span>
