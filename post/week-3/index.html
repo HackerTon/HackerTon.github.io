@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" href="/assets/favicon.ico"><title>Monitor Filament Moisture</title><link rel="stylesheet" href="/astrofiles/cv.DXBA8MAs.css" />
-<link rel="stylesheet" href="/astrofiles/markdown.D42A3-Zx.css" /></head> <body class="bg-[#301934] py-20 px-10 md:px-[15%] lg:px-[20%]"> <div class="bg-white py-5 px-8 rounded-lg shadow-lg shadow-[#301910]"> <h1 id="explanation-about-the-code">Explanation about the code</h1>
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" href="/assets/favicon.ico"><title>Monitor Filament Moisture</title><link rel="stylesheet" href="/astrofiles/cv.D7a5X9BH.css">
+<link rel="stylesheet" href="/astrofiles/markdown.BqEpqeAo.css"></head> <body class="bg-[#301934] py-20 px-10 md:px-[15%] lg:px-[20%]"> <div class="bg-white py-5 px-8 rounded-lg shadow-lg shadow-[#301910]"> <h1 id="explanation-about-the-code">Explanation about the code</h1>
 <h2 id="setup-function">Setup Function</h2>
-<pre class="astro-code nord" style="background-color:#2e3440ff;color:#d8dee9ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color:#616E88">// Basic Controller for wifi, mdns and ota</span></span>
+<pre class="astro-code nord" style="background-color:#2e3440ff;color:#d8dee9ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#616E88">// Basic Controller for wifi, mdns and ota</span></span>
 <span class="line"><span style="color:#81A1C1">void</span><span style="color:#88C0D0"> setup</span><span style="color:#ECEFF4">()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#D8DEE9">    Serial</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">begin</span><span style="color:#ECEFF4">(</span><span style="color:#B48EAD">115200</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1">;</span></span>
 <span class="line"><span style="color:#D8DEE9">    dht</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">begin</span><span style="color:#ECEFF4">()</span><span style="color:#81A1C1">;</span></span>
@@ -24,7 +24,8 @@
 <span class="line"></span>
 <span class="line"><span style="color:#D8DEE9">    display</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">display</span><span style="color:#ECEFF4">()</span><span style="color:#81A1C1">;</span></span>
 <span class="line"><span style="color:#88C0D0">    delay</span><span style="color:#ECEFF4">(</span><span style="color:#B48EAD">2000</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1">;</span></span>
-<span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
+<span class="line"><span style="color:#ECEFF4">}</span></span>
+<span class="line"></span></code></pre>
 <p>First, we will have to initialize a Serial IO with baudarate of 115200.
 Besides that, we have to initialize our DHT. To allow our device to communicate
 with any other client. We have to first initialize our our as a wifi station
@@ -32,7 +33,7 @@ that will connect to our home wifi by calling <code>controller.enable_wifi_stati
 function with <code>SSID</code> and <code>PASSWORD</code> argument. After that, we will need to initialize our OLED display with <code>display.begin(SSD1306_SWITCHCAPVCC, 0x3C)</code>. Finally we will clear our display by
 calling <code>display.display()</code>.</p>
 <h2 id="loop-function">Loop Function</h2>
-<pre class="astro-code nord" style="background-color:#2e3440ff;color:#d8dee9ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color:#81A1C1">void</span><span style="color:#88C0D0"> loop</span><span style="color:#ECEFF4">()</span><span style="color:#ECEFF4"> {</span></span>
+<pre class="astro-code nord" style="background-color:#2e3440ff;color:#d8dee9ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#81A1C1">void</span><span style="color:#88C0D0"> loop</span><span style="color:#ECEFF4">()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#88C0D0">    delay</span><span style="color:#ECEFF4">(</span><span style="color:#B48EAD">1000</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1">;</span></span>
 <span class="line"><span style="color:#8FBCBB">    sensors_event_t</span><span style="color:#D8DEE9FF"> event</span><span style="color:#81A1C1">;</span></span>
 <span class="line"></span>
@@ -56,12 +57,13 @@ calling <code>display.display()</code>.</p>
 <span class="line"></span>
 <span class="line"><span style="color:#D8DEE9">    controller</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">handler_ota</span><span style="color:#ECEFF4">()</span><span style="color:#81A1C1">;</span></span>
 <span class="line"><span style="color:#616E88">    // server.handleClient();</span></span>
-<span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
+<span class="line"><span style="color:#ECEFF4">}</span></span>
+<span class="line"></span></code></pre>
 <p>We delay our looping by at least 1000ms. After that, we read the temperature and humidity
 then store them in <code>float temperature</code> and <code>float humidity</code>. We will then write out our values
 in OLED.</p>
 <h2 id="constant-header">Constant header</h2>
-<pre class="astro-code nord" style="background-color:#2e3440ff;color:#d8dee9ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0"><code><span class="line"><span style="color:#5E81AC;font-weight:bold">#</span><span style="color:#81A1C1">include</span><span style="color:#ECEFF4"> &#x3C;</span><span style="color:#A3BE8C">Arduino.h</span><span style="color:#ECEFF4">></span></span>
+<pre class="astro-code nord" style="background-color:#2e3440ff;color:#d8dee9ff; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#5E81AC;font-weight:bold">#</span><span style="color:#81A1C1">include</span><span style="color:#ECEFF4"> &#x3C;</span><span style="color:#A3BE8C">Arduino.h</span><span style="color:#ECEFF4">></span></span>
 <span class="line"><span style="color:#616E88">// #include &#x3C;BH1750.h></span></span>
 <span class="line"><span style="color:#5E81AC;font-weight:bold">#</span><span style="color:#81A1C1">include</span><span style="color:#ECEFF4"> &#x3C;</span><span style="color:#A3BE8C">DHT_U.h</span><span style="color:#ECEFF4">></span></span>
 <span class="line"><span style="color:#616E88">// #include &#x3C;WebServer.h></span></span>
@@ -84,5 +86,6 @@ in OLED.</p>
 <span class="line"><span style="color:#81A1C1">const</span><span style="color:#81A1C1"> int</span><span style="color:#D8DEE9FF"> PORT </span><span style="color:#81A1C1">=</span><span style="color:#B48EAD"> 9105</span><span style="color:#81A1C1">;</span></span>
 <span class="line"><span style="color:#81A1C1">const</span><span style="color:#81A1C1"> int</span><span style="color:#D8DEE9FF"> SCREEN_WIDTH </span><span style="color:#81A1C1">=</span><span style="color:#B48EAD"> 128</span><span style="color:#81A1C1">;</span></span>
 <span class="line"><span style="color:#81A1C1">const</span><span style="color:#81A1C1"> int</span><span style="color:#D8DEE9FF"> SCREEN_HEIGHT </span><span style="color:#81A1C1">=</span><span style="color:#B48EAD"> 64</span><span style="color:#81A1C1">;</span></span>
-<span class="line"><span style="color:#81A1C1">const</span><span style="color:#81A1C1"> int</span><span style="color:#D8DEE9FF"> OLED_RESET </span><span style="color:#81A1C1">=</span><span style="color:#81A1C1"> -</span><span style="color:#B48EAD">1</span><span style="color:#81A1C1">;</span></span></code></pre>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#81A1C1"> int</span><span style="color:#D8DEE9FF"> OLED_RESET </span><span style="color:#81A1C1">=</span><span style="color:#81A1C1"> -</span><span style="color:#B48EAD">1</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span></code></pre>
 <p>Here is a place your store your constant.</p> </div> </body></html>
